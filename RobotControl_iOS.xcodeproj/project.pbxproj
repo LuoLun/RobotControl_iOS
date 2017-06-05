@@ -7,13 +7,30 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6F1662521EE5A3CA00F221E0 /* BlocklyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F1662511EE5A3CA00F221E0 /* BlocklyViewController.swift */; };
+		6F1662821EE5BB3900F221E0 /* Block.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F1662761EE5BB3900F221E0 /* Block.swift */; };
+		6F1662831EE5BB3900F221E0 /* BlockBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F1662771EE5BB3900F221E0 /* BlockBuilder.swift */; };
+		6F1662841EE5BB3900F221E0 /* BlockGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F1662781EE5BB3900F221E0 /* BlockGroup.swift */; };
+		6F1662851EE5BB3900F221E0 /* Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F1662791EE5BB3900F221E0 /* Connection.swift */; };
+		6F1662861EE5BB3900F221E0 /* ConnectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F16627A1EE5BB3900F221E0 /* ConnectionManager.swift */; };
+		6F1662871EE5BB3900F221E0 /* Field.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F16627B1EE5BB3900F221E0 /* Field.swift */; };
+		6F1662881EE5BB3900F221E0 /* FieldLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F16627C1EE5BB3900F221E0 /* FieldLabel.swift */; };
+		6F1662891EE5BB3900F221E0 /* Workspace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F16627D1EE5BB3900F221E0 /* Workspace.swift */; };
+		6F16628A1EE5BB3900F221E0 /* FieldLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F16627F1EE5BB3900F221E0 /* FieldLabelView.swift */; };
+		6F16628B1EE5BB3900F221E0 /* FieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F1662801EE5BB3900F221E0 /* FieldView.swift */; };
+		6F16628C1EE5BB3900F221E0 /* WorkspaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F1662811EE5BB3900F221E0 /* WorkspaceView.swift */; };
+		6F16628E1EE5C36F00F221E0 /* Input.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F16628D1EE5C36F00F221E0 /* Input.swift */; };
+		6F1662901EE5C44300F221E0 /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F16628F1EE5C44300F221E0 /* InputView.swift */; };
+		6F1662921EE5C58C00F221E0 /* ViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F1662911EE5C58C00F221E0 /* ViewBuilder.swift */; };
+		6F1662941EE5C5DF00F221E0 /* BlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F1662931EE5C5DF00F221E0 /* BlockView.swift */; };
+		6F1E91341EE59ED100E972E9 /* ConnectionManagerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F1E91331EE59ED100E972E9 /* ConnectionManagerTest.swift */; };
+		6F1E91391EE59F2D00E972E9 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F1E91371EE59F0A00E972E9 /* XCTest.framework */; };
 		6F74DAB31EDEED9B003A6B23 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F74DAB21EDEED9B003A6B23 /* AppDelegate.swift */; };
-		6F74DAB51EDEED9B003A6B23 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F74DAB41EDEED9B003A6B23 /* ViewController.swift */; };
-		6F74DAB81EDEED9B003A6B23 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6F74DAB61EDEED9B003A6B23 /* Main.storyboard */; };
-		6F74DABB1EDEED9B003A6B23 /* RobotControl_iOS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6F74DAB91EDEED9B003A6B23 /* RobotControl_iOS.xcdatamodeld */; };
 		6F74DABD1EDEED9B003A6B23 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6F74DABC1EDEED9B003A6B23 /* Assets.xcassets */; };
 		6F74DAC01EDEED9B003A6B23 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6F74DABE1EDEED9B003A6B23 /* LaunchScreen.storyboard */; };
 		6F74DACB1EDEED9B003A6B23 /* RobotControl_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F74DACA1EDEED9B003A6B23 /* RobotControl_iOSTests.swift */; };
+		6F74DAD61EDEEDE0003A6B23 /* DemoPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F74DAD51EDEEDE0003A6B23 /* DemoPickerViewController.swift */; };
+		6F8603E61EDEF72D00AA4507 /* UIView + AutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8603E51EDEF72D00AA4507 /* UIView + AutoLayout.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -26,18 +43,48 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		6F8603DD1EDEF44000AA4507 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		6F1662511EE5A3CA00F221E0 /* BlocklyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BlocklyViewController.swift; path = RobotControl_iOS/BlocklyViewController/BlocklyViewController.swift; sourceTree = SOURCE_ROOT; };
+		6F1662761EE5BB3900F221E0 /* Block.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Block.swift; sourceTree = "<group>"; };
+		6F1662771EE5BB3900F221E0 /* BlockBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlockBuilder.swift; sourceTree = "<group>"; };
+		6F1662781EE5BB3900F221E0 /* BlockGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlockGroup.swift; sourceTree = "<group>"; };
+		6F1662791EE5BB3900F221E0 /* Connection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Connection.swift; sourceTree = "<group>"; };
+		6F16627A1EE5BB3900F221E0 /* ConnectionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionManager.swift; sourceTree = "<group>"; };
+		6F16627B1EE5BB3900F221E0 /* Field.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Field.swift; sourceTree = "<group>"; };
+		6F16627C1EE5BB3900F221E0 /* FieldLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FieldLabel.swift; sourceTree = "<group>"; };
+		6F16627D1EE5BB3900F221E0 /* Workspace.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Workspace.swift; sourceTree = "<group>"; };
+		6F16627F1EE5BB3900F221E0 /* FieldLabelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FieldLabelView.swift; sourceTree = "<group>"; };
+		6F1662801EE5BB3900F221E0 /* FieldView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FieldView.swift; sourceTree = "<group>"; };
+		6F1662811EE5BB3900F221E0 /* WorkspaceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkspaceView.swift; sourceTree = "<group>"; };
+		6F16628D1EE5C36F00F221E0 /* Input.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Input.swift; sourceTree = "<group>"; };
+		6F16628F1EE5C44300F221E0 /* InputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputView.swift; sourceTree = "<group>"; };
+		6F1662911EE5C58C00F221E0 /* ViewBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewBuilder.swift; sourceTree = "<group>"; };
+		6F1662931EE5C5DF00F221E0 /* BlockView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlockView.swift; sourceTree = "<group>"; };
+		6F1E91331EE59ED100E972E9 /* ConnectionManagerTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConnectionManagerTest.swift; path = VisualProgramming/ConnectionManagerTest.swift; sourceTree = "<group>"; };
+		6F1E91371EE59F0A00E972E9 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		6F74DAAF1EDEED9B003A6B23 /* RobotControl_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RobotControl_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F74DAB21EDEED9B003A6B23 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		6F74DAB41EDEED9B003A6B23 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		6F74DAB71EDEED9B003A6B23 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		6F74DABA1EDEED9B003A6B23 /* RobotControl_iOS.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RobotControl_iOS.xcdatamodel; sourceTree = "<group>"; };
 		6F74DABC1EDEED9B003A6B23 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6F74DABF1EDEED9B003A6B23 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6F74DAC11EDEED9B003A6B23 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6F74DAC61EDEED9B003A6B23 /* RobotControl_iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RobotControl_iOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F74DACA1EDEED9B003A6B23 /* RobotControl_iOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RobotControl_iOSTests.swift; sourceTree = "<group>"; };
 		6F74DACC1EDEED9B003A6B23 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6F74DAD51EDEEDE0003A6B23 /* DemoPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoPickerViewController.swift; sourceTree = "<group>"; };
+		6F8603E51EDEF72D00AA4507 /* UIView + AutoLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView + AutoLayout.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,18 +99,76 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6F1E91391EE59F2D00E972E9 /* XCTest.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6F1662751EE5BB3900F221E0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				6F1662761EE5BB3900F221E0 /* Block.swift */,
+				6F1662771EE5BB3900F221E0 /* BlockBuilder.swift */,
+				6F1662781EE5BB3900F221E0 /* BlockGroup.swift */,
+				6F1662791EE5BB3900F221E0 /* Connection.swift */,
+				6F16627A1EE5BB3900F221E0 /* ConnectionManager.swift */,
+				6F16627B1EE5BB3900F221E0 /* Field.swift */,
+				6F16627C1EE5BB3900F221E0 /* FieldLabel.swift */,
+				6F16627D1EE5BB3900F221E0 /* Workspace.swift */,
+				6F16628D1EE5C36F00F221E0 /* Input.swift */,
+			);
+			name = Model;
+			path = VisualProgramming/Model;
+			sourceTree = "<group>";
+		};
+		6F16627E1EE5BB3900F221E0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				6F1662931EE5C5DF00F221E0 /* BlockView.swift */,
+				6F16627F1EE5BB3900F221E0 /* FieldLabelView.swift */,
+				6F1662801EE5BB3900F221E0 /* FieldView.swift */,
+				6F1662811EE5BB3900F221E0 /* WorkspaceView.swift */,
+				6F16628F1EE5C44300F221E0 /* InputView.swift */,
+				6F1662911EE5C58C00F221E0 /* ViewBuilder.swift */,
+			);
+			name = View;
+			path = VisualProgramming/View;
+			sourceTree = "<group>";
+		};
+		6F1E911A1EE54F4E00E972E9 /* VisualProgramming */ = {
+			isa = PBXGroup;
+			children = (
+				6F1662751EE5BB3900F221E0 /* Model */,
+				6F16627E1EE5BB3900F221E0 /* View */,
+			);
+			name = VisualProgramming;
+			sourceTree = "<group>";
+		};
+		6F1E91321EE59EB700E972E9 /* VisualProgramming */ = {
+			isa = PBXGroup;
+			children = (
+				6F1E91331EE59ED100E972E9 /* ConnectionManagerTest.swift */,
+			);
+			name = VisualProgramming;
+			sourceTree = "<group>";
+		};
+		6F1E91361EE59F0A00E972E9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6F1E91371EE59F0A00E972E9 /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		6F74DAA61EDEED9A003A6B23 = {
 			isa = PBXGroup;
 			children = (
 				6F74DAB11EDEED9B003A6B23 /* RobotControl_iOS */,
 				6F74DAC91EDEED9B003A6B23 /* RobotControl_iOSTests */,
 				6F74DAB01EDEED9B003A6B23 /* Products */,
+				6F1E91361EE59F0A00E972E9 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -79,13 +184,14 @@
 		6F74DAB11EDEED9B003A6B23 /* RobotControl_iOS */ = {
 			isa = PBXGroup;
 			children = (
+				6F1E911A1EE54F4E00E972E9 /* VisualProgramming */,
 				6F74DAB21EDEED9B003A6B23 /* AppDelegate.swift */,
-				6F74DAB41EDEED9B003A6B23 /* ViewController.swift */,
-				6F74DAB61EDEED9B003A6B23 /* Main.storyboard */,
+				6F74DAD51EDEEDE0003A6B23 /* DemoPickerViewController.swift */,
+				6F8603E71EDEF73F00AA4507 /* BlocklyViewController */,
+				6F8603E41EDEF72D00AA4507 /* Utils */,
 				6F74DABC1EDEED9B003A6B23 /* Assets.xcassets */,
 				6F74DABE1EDEED9B003A6B23 /* LaunchScreen.storyboard */,
 				6F74DAC11EDEED9B003A6B23 /* Info.plist */,
-				6F74DAB91EDEED9B003A6B23 /* RobotControl_iOS.xcdatamodeld */,
 			);
 			path = RobotControl_iOS;
 			sourceTree = "<group>";
@@ -93,10 +199,28 @@
 		6F74DAC91EDEED9B003A6B23 /* RobotControl_iOSTests */ = {
 			isa = PBXGroup;
 			children = (
+				6F1E91321EE59EB700E972E9 /* VisualProgramming */,
 				6F74DACA1EDEED9B003A6B23 /* RobotControl_iOSTests.swift */,
 				6F74DACC1EDEED9B003A6B23 /* Info.plist */,
 			);
 			path = RobotControl_iOSTests;
+			sourceTree = "<group>";
+		};
+		6F8603E41EDEF72D00AA4507 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				6F8603E51EDEF72D00AA4507 /* UIView + AutoLayout.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		6F8603E71EDEF73F00AA4507 /* BlocklyViewController */ = {
+			isa = PBXGroup;
+			children = (
+				6F1662511EE5A3CA00F221E0 /* BlocklyViewController.swift */,
+			);
+			name = BlocklyViewController;
+			path = BloclyViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -109,6 +233,7 @@
 				6F74DAAB1EDEED9B003A6B23 /* Sources */,
 				6F74DAAC1EDEED9B003A6B23 /* Frameworks */,
 				6F74DAAD1EDEED9B003A6B23 /* Resources */,
+				6F8603DD1EDEF44000AA4507 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -184,7 +309,6 @@
 			files = (
 				6F74DAC01EDEED9B003A6B23 /* LaunchScreen.storyboard in Resources */,
 				6F74DABD1EDEED9B003A6B23 /* Assets.xcassets in Resources */,
-				6F74DAB81EDEED9B003A6B23 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -202,9 +326,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6F74DAB51EDEED9B003A6B23 /* ViewController.swift in Sources */,
+				6F16628A1EE5BB3900F221E0 /* FieldLabelView.swift in Sources */,
+				6F1662871EE5BB3900F221E0 /* Field.swift in Sources */,
+				6F1662921EE5C58C00F221E0 /* ViewBuilder.swift in Sources */,
+				6F1662521EE5A3CA00F221E0 /* BlocklyViewController.swift in Sources */,
+				6F16628C1EE5BB3900F221E0 /* WorkspaceView.swift in Sources */,
 				6F74DAB31EDEED9B003A6B23 /* AppDelegate.swift in Sources */,
-				6F74DABB1EDEED9B003A6B23 /* RobotControl_iOS.xcdatamodeld in Sources */,
+				6F1662881EE5BB3900F221E0 /* FieldLabel.swift in Sources */,
+				6F1662941EE5C5DF00F221E0 /* BlockView.swift in Sources */,
+				6F16628E1EE5C36F00F221E0 /* Input.swift in Sources */,
+				6F1662841EE5BB3900F221E0 /* BlockGroup.swift in Sources */,
+				6F1662901EE5C44300F221E0 /* InputView.swift in Sources */,
+				6F1662851EE5BB3900F221E0 /* Connection.swift in Sources */,
+				6F1662861EE5BB3900F221E0 /* ConnectionManager.swift in Sources */,
+				6F1662821EE5BB3900F221E0 /* Block.swift in Sources */,
+				6F1662831EE5BB3900F221E0 /* BlockBuilder.swift in Sources */,
+				6F1662891EE5BB3900F221E0 /* Workspace.swift in Sources */,
+				6F74DAD61EDEEDE0003A6B23 /* DemoPickerViewController.swift in Sources */,
+				6F8603E61EDEF72D00AA4507 /* UIView + AutoLayout.swift in Sources */,
+				6F16628B1EE5BB3900F221E0 /* FieldView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -213,6 +353,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6F74DACB1EDEED9B003A6B23 /* RobotControl_iOSTests.swift in Sources */,
+				6F1E91341EE59ED100E972E9 /* ConnectionManagerTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -227,14 +368,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		6F74DAB61EDEED9B003A6B23 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				6F74DAB71EDEED9B003A6B23 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		6F74DABE1EDEED9B003A6B23 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -345,6 +478,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/RobotControl_iOS",
+				);
 				INFOPLIST_FILE = RobotControl_iOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.aaron.RobotControl-iOS";
@@ -357,6 +494,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/RobotControl_iOS",
+				);
 				INFOPLIST_FILE = RobotControl_iOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.aaron.RobotControl-iOS";
@@ -412,6 +553,7 @@
 				6F74DAD11EDEED9B003A6B23 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		6F74DAD21EDEED9B003A6B23 /* Build configuration list for PBXNativeTarget "RobotControl_iOSTests" */ = {
 			isa = XCConfigurationList;
@@ -420,21 +562,9 @@
 				6F74DAD41EDEED9B003A6B23 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		6F74DAB91EDEED9B003A6B23 /* RobotControl_iOS.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				6F74DABA1EDEED9B003A6B23 /* RobotControl_iOS.xcdatamodel */,
-			);
-			currentVersion = 6F74DABA1EDEED9B003A6B23 /* RobotControl_iOS.xcdatamodel */;
-			path = RobotControl_iOS.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 6F74DAA71EDEED9A003A6B23 /* Project object */;
 }
