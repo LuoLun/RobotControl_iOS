@@ -18,11 +18,4 @@ class BlockGroup: NSObject {
         super.init()
     }
     
-    func moveTo(_ point: Workspace.Point) {
-        let moveOffset = Workspace.Point.offsetFor(rootBlock.workspacePosition, point)
-        for block in blocks {
-            block.workspacePosition.x += moveOffset.x
-            block.workspacePosition.y += moveOffset.y
-        }
-    }
 }

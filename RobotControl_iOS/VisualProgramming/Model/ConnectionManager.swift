@@ -20,7 +20,6 @@ class ConnectionManager: NSObject {
         case .previous:
             if let targetBlock = aConnection.targetBlock {
                 targetBlock.nextConnection?.targetBlock = nil
-                targetBlock.childConnection?.targetBlock = nil
             }
             
             aConnection.targetBlock = anotherConnection.sourceBlock

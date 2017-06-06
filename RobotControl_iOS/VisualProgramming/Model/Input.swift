@@ -9,11 +9,10 @@
 import UIKit
 
 class Input: NSObject {
+    var fields = [Field]()
 }
 
 class FieldInput: Input {
-    var fields = [Field]()
-    
     func appendField(_ field: Field) {
         fields.append(field)
     }
@@ -21,4 +20,9 @@ class FieldInput: Input {
 
 class BlockInput: Input {
     let connection = Connection(category: .child)
+    
+    var blocks = [Block]()
+    func appendBlock(_ block: Block) {
+        blocks.append(block)
+    }
 }

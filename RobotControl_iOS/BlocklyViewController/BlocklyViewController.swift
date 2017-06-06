@@ -15,14 +15,16 @@ class BlocklyViewController: UIViewController {
         
         self.edgesForExtendedLayout = []
         
+        let layoutConfig = LayoutConfig()
+        
         let workspace = Workspace()
-        let workspaceView = WorkspaceView(workspace: workspace, viewBuilder: ViewBuilder())
+        let workspaceView = WorkspaceView(workspace: workspace, viewBuilder: ViewBuilder(layoutConfig: layoutConfig))
         workspace.listener = workspaceView
         workspaceView.frame = self.view.frame
         
         self.view.addSubview(workspaceView)
         
-        let blockBuilder = BlockBuilder(hasPreviousConnection: true, hasNextConnection: true, hasChildConnection: false)
+        let blockBuilder = BlockBuilder(hasPreviousConnection: true, hasNextConnection: true)
         
         let block1 = blockBuilder.buildBlock()
         let input1 = FieldInput()

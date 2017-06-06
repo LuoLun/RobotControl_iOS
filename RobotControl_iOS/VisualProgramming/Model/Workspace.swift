@@ -34,17 +34,17 @@ class Workspace: NSObject {
     
 }
 
-extension Workspace {
-    class Point: NSObject {
-        var x, y: Float
-        
-        init(_ x: Float, _ y: Float) {
-            self.x = x
-            self.y = y
-        }
-        
-        class func offsetFor(_ point1: Point, _ point2: Point) -> Point {
-            return Point(point2.x - point1.x, point2.y - point1.y)
-        }
-    }
-}
+//extension Workspace {
+//    class Point: NSObject {
+//        var x, y: Float
+//        
+//        init(_ x: Float, _ y: Float) {
+//            self.x = x
+//            self.y = y
+//        }
+//        
+//        class func offsetFor(_ point1: Point, _ point2: Point) -> Point {
+//            return Point(point2.x - point1.x, point2.y - point1.y)
+//        }
+//    }
+//}

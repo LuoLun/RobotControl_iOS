@@ -13,19 +13,17 @@ class Block: NSObject {
     let uuid: String
     let previousConnection: Connection?
     let nextConnection: Connection?
-    let childConnection: Connection?
     
     var blockGroup: BlockGroup?
     
     var inputs = [Input]()
     
-    init(uuid: String?, previousConnection: Connection? = nil, nextConnection: Connection? = nil, childConnection: Connection? = nil) {
+    init(uuid: String?, previousConnection: Connection? = nil, nextConnection: Connection? = nil) {
         self.uuid = uuid ?? UUID().uuidString
 
         self.previousConnection = previousConnection
         self.nextConnection = nextConnection
-        self.childConnection = childConnection
-        workspacePosition = Workspace.Point(0, 0)
+//        workspacePosition = Workspace.Point(0, 0)
         
         super.init()
     }
@@ -35,11 +33,9 @@ class Block: NSObject {
     }
     
     func copiedBlock() -> Block {
-        let blockBuilder = BlockBuilder(hasPreviousConnection: previousConnection != nil, hasNextConnection: nextConnection != nil, hasChildConnection: childConnection != nil)
+        let blockBuilder = BlockBuilder(hasPreviousConnection: previousConnection != nil, hasNextConnection: nextConnection != nil)
         return blockBuilder.buildBlock()
     }
-    
-    var workspacePosition: Workspace.Point
     
     // MARK: Field
     
