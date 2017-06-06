@@ -14,6 +14,22 @@ class Block: NSObject {
     let previousConnection: Connection?
     let nextConnection: Connection?
     
+    var directConnections: [Connection] {
+        var connections = [Connection]()
+        if let previousConnection = previousConnection {
+            connections.append(previousConnection)
+        }
+        if let nextConnection = nextConnection {
+            connections.append(nextConnection)
+        }
+        for input in inputs {
+            if let blockInput = input as? BlockInput {
+                connections.append(blockInput.connection)
+            }
+        }
+        return connections
+    }
+    
     var blockGroup: BlockGroup?
     
     var inputs = [Input]()

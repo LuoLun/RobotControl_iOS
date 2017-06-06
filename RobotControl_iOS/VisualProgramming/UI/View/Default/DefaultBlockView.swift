@@ -13,6 +13,8 @@ class DefaultBlockView: BlockView {
     var previousConnectionRelativePosition: CGPoint?
     var nextConnectionRelativePosition: CGPoint?
     
+    var _positionOfConnections = [Connection: CGPoint]()
+    
     override init(block: Block, layoutConfig: LayoutConfig) {
         super.init(block: block, layoutConfig: layoutConfig)
         self.layer.addSublayer(_backgroundLayer)
@@ -23,6 +25,8 @@ class DefaultBlockView: BlockView {
     }
     
     func blockBackgroundBezierPath() -> UIBezierPath {
+        _positionOfConnections.removeAll()
+        
         let path = BlockBezierPath()
         
         let notchWidth = layoutConfig.notchWidth
@@ -31,6 +35,7 @@ class DefaultBlockView: BlockView {
         path.moveTo(x: 0, y: 0)
         
         if self.block.previousConnection != nil {
+            _positionOfConnections[self.block.previousConnection!] = CGPoint(x: path.currentX() + notchWidth / 2, y: path.currentY() + notchHeight / 2)
             PathHelper.addNotch(toPath: path, drawLeftToRight: true, notchWidth: notchWidth, notchHeight: notchHeight)
         }
         path.addLineTo(x: self.frame.width, y: 0, relative: false)
@@ -57,6 +62,7 @@ class DefaultBlockView: BlockView {
             else if inputView is BlockInputView {
                 let blockInputView = inputView as! BlockInputView
                 path.addLineTo(x: blockInputView.statementIndent + notchWidth, y: path.currentY(), relative: false)
+                _positionOfConnections[blockInputView.blockInput.connection] = CGPoint(x: path.currentX() - notchWidth / 2, y: path.currentY() + notchHeight / 2)
                 PathHelper.addNotch(toPath: path, drawLeftToRight: false, notchWidth: notchWidth, notchHeight: notchHeight)
                 path.addLineTo(x: path.currentY(), y: blockInputView.frame.height, relative: false)
                 PathHelper.addNotch(toPath: path, drawLeftToRight: true, notchWidth: notchWidth, notchHeight: notchHeight)
@@ -68,6 +74,7 @@ class DefaultBlockView: BlockView {
         
         if self.block.nextConnection != nil {
             path.addLineTo(x: notchWidth, y: path.currentY(), relative: false)
+            _positionOfConnections[self.block.nextConnection!] = CGPoint(x: path.currentX() - notchWidth / 2, y: path.currentY() + notchHeight / 2)
             PathHelper.addNotch(toPath: path, drawLeftToRight: false, notchWidth: notchWidth, notchHeight: notchHeight)
         }
         else {
@@ -98,5 +105,12 @@ class DefaultBlockView: BlockView {
         self._backgroundLayer.strokeColor = UIColor.black.cgColor
         self._backgroundLayer.frame = self.bounds
         self.setNeedsDisplay()
+    }
+    
+    override func positionOf(_ connection: Connection) -> CGPoint {
+        if _positionOfConnections.count == 0 {
+            self.layoutSubviews()
+        }
+        return _positionOfConnections[connection]!
     }
 }

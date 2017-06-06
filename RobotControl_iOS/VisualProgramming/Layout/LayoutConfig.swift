@@ -18,4 +18,6 @@ class LayoutConfig: NSObject {
     let leadingXEdgeOffset = 8
     
     let minBlockWidth: CGFloat = 60
+    
+    let connectingDistance: CGFloat = 45
 }

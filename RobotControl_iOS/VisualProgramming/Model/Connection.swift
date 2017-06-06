@@ -8,8 +8,14 @@
 
 import UIKit
 
+protocol ConnectionDelegate: class {
+    func positionOf(_ connection: Connection) -> CGPoint
+}
+    
 class Connection: NSObject {
 
+    weak var delegate: ConnectionDelegate?
+    
     enum Category {
         case previous
         case next

@@ -27,6 +27,9 @@ class BlockBuilder: NSObject {
         previousConnection?.sourceBlock = block
         nextConnection?.sourceBlock = block
         
+        block.blockGroup = BlockGroup(rootBlock: block)
+        block.blockGroup?.blocks.append(block)
+        
         return block
     }
 }

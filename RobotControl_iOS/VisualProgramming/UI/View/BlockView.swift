@@ -11,7 +11,6 @@ import UIKit
 class BlockView: LayoutView {
 
     let block: Block
-    var blockGroupView: BlockGroupView?
 
     init(block: Block, layoutConfig: LayoutConfig) {
         self.block = block
@@ -34,5 +33,11 @@ class BlockView: LayoutView {
             size.width = max(subview.frame.size.width, size.width)
         }
         self.frame.size = size
+    }
+}
+
+extension BlockView: ConnectionDelegate {
+    func positionOf(_ connection: Connection) -> CGPoint {
+        return CGPoint.zero
     }
 }

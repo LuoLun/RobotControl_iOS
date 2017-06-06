@@ -27,6 +27,8 @@ class ViewBuilder: NSObject {
             blockView.addSubview(inputView)
         }
         
+        blockView.block.directConnections.forEach{ $0.delegate = blockView }
+        
         return blockView
     }
     
@@ -45,7 +47,7 @@ class ViewBuilder: NSObject {
     }
     
     func buildFieldInputView(_ input: FieldInput) -> FieldInputView {
-        let fieldInputView = FieldInputView(layoutConfig: layoutConfig)
+        let fieldInputView = FieldInputView(fieldInput: input, layoutConfig: layoutConfig)
         
         for field in input.fields {
             let fieldView = buildFieldView(field)
@@ -56,7 +58,7 @@ class ViewBuilder: NSObject {
     }
     
     func buildBlockInputView(_ input: BlockInput) -> BlockInputView {
-        let blockInputView = BlockInputView(layoutConfig: layoutConfig)
+        let blockInputView = BlockInputView(input: input, layoutConfig: layoutConfig)
         
         for field in input.fields {
             let fieldView = buildFieldView(field)

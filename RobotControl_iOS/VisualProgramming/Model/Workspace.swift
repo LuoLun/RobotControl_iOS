@@ -17,6 +17,8 @@ class Workspace: NSObject {
     
     var listener: WorkspaceListener?
     
+    let connectionManager: ConnectionManager
+    
     var _blocks = [String: Block]()
     
     func addBlock(_ block: Block) {
@@ -31,7 +33,10 @@ class Workspace: NSObject {
         }
     }
     
-    
+    override init() {
+        connectionManager = ConnectionManager()
+        super.init()
+    }
 }
 
 //extension Workspace {
