@@ -107,10 +107,13 @@ class DefaultBlockView: BlockView {
         self.setNeedsDisplay()
     }
     
-    override func positionOf(_ connection: Connection) -> CGPoint {
+    override func workspacePositionOf(_ connection: Connection) -> CGPoint {
         if _positionOfConnections.count == 0 {
             self.layoutSubviews()
         }
-        return _positionOfConnections[connection]!
+        let blockPosition = _positionOfConnections[connection]!
+        let workspacePosition = CGPoint(x: blockPosition.x + self.frame.origin.x, y: blockPosition.y + self.frame.origin.y)
+        return workspacePosition
     }
 }
+

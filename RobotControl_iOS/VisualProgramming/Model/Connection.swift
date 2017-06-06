@@ -9,7 +9,7 @@
 import UIKit
 
 protocol ConnectionDelegate: class {
-    func positionOf(_ connection: Connection) -> CGPoint
+    func workspacePositionOf(_ connection: Connection) -> CGPoint
 }
     
 class Connection: NSObject {
@@ -44,5 +44,9 @@ class Connection: NSObject {
         case .child:
             return connection.category == .previous
         }
+    }
+    
+    func workspacePosition() -> CGPoint {
+        return delegate!.workspacePositionOf(self)
     }
 }

@@ -24,12 +24,17 @@ class Workspace: NSObject {
     func addBlock(_ block: Block) {
         _blocks[block.uuid] = block
         listener?.workspaceDidAddBlock(block)
+        
+        block.directConnections.forEach { connectionManager.trackConnection($0) }
     }
     
     func removeBlockGroup(_ blockGroup: BlockGroup) {
         for block in blockGroup.blocks {
             _blocks[block.uuid] = nil
             listener?.workspaceDidRemoveBlock(block)
+            
+            block.directConnections.forEach { connectionManager.untrackConnection($0) }
+
         }
     }
     

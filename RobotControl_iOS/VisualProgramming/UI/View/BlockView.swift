@@ -37,7 +37,7 @@ class BlockView: LayoutView {
 }
 
 extension BlockView: ConnectionDelegate {
-    func positionOf(_ connection: Connection) -> CGPoint {
+    func workspacePositionOf(_ connection: Connection) -> CGPoint {
         return CGPoint.zero
     }
 }

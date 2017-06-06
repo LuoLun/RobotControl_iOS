@@ -10,11 +10,26 @@ import UIKit
 
 protocol ConnectionManagerDelegate: class {
     func move(blockGroup: BlockGroup, withOffsetFrom from: Connection, to: Connection)
+    var layoutConfig: LayoutConfig {get}
 }
 
 class ConnectionManager: NSObject {
 
     weak var delegate: ConnectionManagerDelegate?
+    
+    // MARK: - Tracking
+    
+    var _connections = Set<Connection>()
+    
+    func trackConnection(_ connection: Connection) {
+        _connections.insert(connection)
+    }
+    
+    func untrackConnection(_ connection: Connection) {
+        _connections.remove(connection)
+    }
+    
+    // MARK: - Operation
     
     func connect(_ aConnection: Connection, anotherConnection: Connection) throws {
         
@@ -96,6 +111,41 @@ class ConnectionManager: NSObject {
         default:
             disconnect(anotherConnection)
         }
+    }
+    
+    // MARK: - Finding
+    
+    func findAvailableConnection(_ connection: Connection) -> Connection? {
+        var nearest: Connection? = nil
+        var nearestDistance:CGFloat = 0
+        
+        for aConnection in _connections {
+            if aConnection == connection {
+                continue
+            }
+            
+            if aConnection.matchWith(connection) == false {
+                continue
+            }
+            
+            let distance = distanceBetween(connection, anotherConnection: aConnection)
+            if distance < delegate!.layoutConfig.connectingDistance {
+                if nearest == nil || nearestDistance > distance {
+                    nearest = aConnection
+                    nearestDistance = distance
+                }
+            }
+        }
+        
+        return nearest
+    }
+    
+    func distanceBetween(_ connection: Connection, anotherConnection: Connection) -> CGFloat {
+        let pos1 = connection.workspacePosition()
+        let pos2 = anotherConnection.workspacePosition()
+        
+        let delta = pow(pow(pos1.x - pos2.x, 2) + pow(pos1.y - pos2.y, 2), 0.5)
+        return delta
     }
 }
 

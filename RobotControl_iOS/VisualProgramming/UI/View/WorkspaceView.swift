@@ -11,6 +11,10 @@ import UIKit
 class WorkspaceView: LayoutView, WorkspaceListener {
 
     let workspace: Workspace
+    var connectionManager: ConnectionManager {
+        return workspace.connectionManager
+    }
+    
     let viewBuilder: ViewBuilder
     
     let viewManager = ViewManager()
@@ -22,7 +26,7 @@ class WorkspaceView: LayoutView, WorkspaceListener {
         self.viewBuilder = viewBuilder
         super.init(layoutConfig: viewBuilder.layoutConfig)
         
-        workspace.connectionManager.delegate = self
+        connectionManager.delegate = self
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -66,7 +70,7 @@ class WorkspaceView: LayoutView, WorkspaceListener {
             if recognizer.state == .began {
                 
                 // 如果正在移动的方块有前置语句方块，则先断开与前置方块的连接
-                workspace.connectionManager.disconnect(blockView.block.previousConnection!)
+                connectionManager.disconnect(blockView.block.previousConnection!)
                 
                 panBeginPoint = recognizer.location(in: self)
                 panBlockGruopBeginPoints.removeAll()
@@ -83,6 +87,21 @@ class WorkspaceView: LayoutView, WorkspaceListener {
                     aBlockView.frame.origin = CGPoint(x: panBlockGruopBeginPoints[aBlock]!.x + delta.x, y: panBlockGruopBeginPoints[aBlock]!.y + delta.y)
                 }
             }
+            else  if recognizer.state == .ended {
+                
+                // 如果附近有可用连接，则连接上
+                if let previousConnection = blockView.block.previousConnection  {
+                    let availableConnection = connectionManager.findAvailableConnection(previousConnection)
+                    if let availableConnection = availableConnection {
+                        do {
+                            try connectionManager.connect(previousConnection, anotherConnection: availableConnection)
+                        }
+                        catch {
+                            fatalError()
+                        }
+                    }
+                }
+            }
         }
         
         self.layoutSubviews()
@@ -91,8 +110,8 @@ class WorkspaceView: LayoutView, WorkspaceListener {
 
 extension WorkspaceView:  ConnectionManagerDelegate {
     func move(blockGroup: BlockGroup, withOffsetFrom from: Connection, to: Connection) {
-        let toPosition = to.delegate!.positionOf(to)
-        let fromPosition = from.delegate!.positionOf(from)
+        let toPosition = to.workspacePosition()
+        let fromPosition = from.workspacePosition()
         let offset = CGPoint(x: toPosition.x - fromPosition.x, y: toPosition.y - fromPosition.y)
         
         for block in blockGroup.blocks {
