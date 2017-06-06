@@ -34,8 +34,9 @@ class ConnectionManager: NSObject {
             delegate!.move(blockGroup: aConnection.sourceBlock!.blockGroup!, withOffsetFrom: aConnection, to: anotherConnection)
             
             
-            aConnection.sourceBlock!.blockGroup!.blocks.forEach { anotherConnection.sourceBlock!.blockGroup!.blocks[$0] = $1 }
-            aConnection.sourceBlock!.blockGroup!.blocks.values.forEach {
+            aConnection.sourceBlock!.blockGroup!.blocks.forEach { anotherConnection.sourceBlock!.blockGroup!.addBlock($0)
+            }
+            aConnection.sourceBlock!.blockGroup!.blocks.forEach {
                 $0.blockGroup = anotherConnection.sourceBlock!.blockGroup!
             }
             
@@ -63,7 +64,7 @@ class ConnectionManager: NSObject {
             var stack = [Block]()
             var block: Block? = connection.sourceBlock!
             while block != nil {
-                blockGroupOfLatter.blocks[block!.uuid] = block
+                blockGroupOfLatter.addBlock(block!)
                 for conn in block!.directConnections {
                     if conn.category == .previous {
                         continue
@@ -78,11 +79,11 @@ class ConnectionManager: NSObject {
             }
             
             // 更新后面代码方块组的代码方块的组
-            for block in blockGroupOfLatter.blocks.values {
+            for block in blockGroupOfLatter.blocks {
                 block.blockGroup = blockGroupOfLatter
                 
                 // 在前面的组中国年删去后面的组的方块
-                anotherConnection.sourceBlock!.blockGroup?.blocks[block.uuid] = nil
+                anotherConnection.sourceBlock!.blockGroup!.removeBlock(block)
             }
             
             connection.targetBlock = nil

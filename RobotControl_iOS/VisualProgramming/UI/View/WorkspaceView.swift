@@ -70,7 +70,7 @@ class WorkspaceView: LayoutView, WorkspaceListener {
                 
                 panBeginPoint = recognizer.location(in: self)
                 panBlockGruopBeginPoints.removeAll()
-                for block in blockView.block.blockGroup!.blocks.values {
+                for block in blockView.block.blockGroup!.blocks {
                     panBlockGruopBeginPoints[block] = viewManager.findViewFor(block).frame.origin
                 }
             }
@@ -78,7 +78,7 @@ class WorkspaceView: LayoutView, WorkspaceListener {
                 let currentPanPoint = recognizer.location(in: self)
                 let delta = CGPoint(x: currentPanPoint.x - panBeginPoint.x, y: currentPanPoint.y - panBeginPoint.y)
                 
-                for aBlock in blockView.block.blockGroup!.blocks.values {
+                for aBlock in blockView.block.blockGroup!.blocks {
                     let aBlockView = viewManager.findViewFor(aBlock)
                     aBlockView.frame.origin = CGPoint(x: panBlockGruopBeginPoints[aBlock]!.x + delta.x, y: panBlockGruopBeginPoints[aBlock]!.y + delta.y)
                 }
@@ -95,7 +95,7 @@ extension WorkspaceView:  ConnectionManagerDelegate {
         let fromPosition = from.delegate!.positionOf(from)
         let offset = CGPoint(x: toPosition.x - fromPosition.x, y: toPosition.y - fromPosition.y)
         
-        for block in blockGroup.blocks.values {
+        for block in blockGroup.blocks {
             let blockView = viewManager.findViewFor(block)
             let origin = blockView.frame.origin
             blockView.frame.origin = CGPoint(x: origin.x + offset.x, y: origin.y + offset.y)
