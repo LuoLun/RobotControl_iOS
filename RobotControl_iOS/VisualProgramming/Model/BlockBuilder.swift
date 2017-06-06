@@ -28,7 +28,7 @@ class BlockBuilder: NSObject {
         nextConnection?.sourceBlock = block
         
         block.blockGroup = BlockGroup(rootBlock: block)
-        block.blockGroup?.blocks.append(block)
+        block.blockGroup?.blocks[block.uuid] = block
         
         return block
     }

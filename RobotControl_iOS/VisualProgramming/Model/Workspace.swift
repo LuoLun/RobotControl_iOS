@@ -27,7 +27,7 @@ class Workspace: NSObject {
     }
     
     func removeBlockGroup(_ blockGroup: BlockGroup) {
-        for block in blockGroup.blocks {
+        for block in blockGroup.blocks.values {
             _blocks[block.uuid] = nil
             listener?.workspaceDidRemoveBlock(block)
         }

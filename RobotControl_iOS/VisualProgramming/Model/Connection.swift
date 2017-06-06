@@ -26,6 +26,8 @@ class Connection: NSObject {
     weak var sourceBlock: Block?
     weak var targetBlock: Block?
     
+    weak var targetConnection: Connection?
+    
     init(category: Category, sourceBlock: Block? = nil, targetBlock: Block? = nil) {
         self.category = category
         super.init()

@@ -10,12 +10,13 @@ import UIKit
 
 class BlockGroup: NSObject {
 
-    var blocks = [Block]()
+    var blocks = [String: Block]()
     var rootBlock: Block
     
     init(rootBlock: Block) {
         self.rootBlock = rootBlock
         super.init()
+        blocks[rootBlock.uuid] = rootBlock
     }
     
 }
