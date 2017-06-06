@@ -18,7 +18,6 @@ class FieldView: UIView {
 
     init() {
         super.init(frame: .zero)
-        self.translatesAutoresizingMaskIntoConstraints = false
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -28,4 +27,8 @@ class FieldView: UIView {
     func didSetField(_ field: Field?) {
         
     }
+    
+//    override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
+//        return nil
+//    }
 }

@@ -13,12 +13,14 @@ class BlocklyViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.edgesForExtendedLayout = []
+        
         let workspace = Workspace()
         let workspaceView = WorkspaceView(workspace: workspace, viewBuilder: ViewBuilder())
         workspace.listener = workspaceView
+        workspaceView.frame = self.view.frame
         
-        self.view.autolayout_addSubview(workspaceView)
-        workspaceView.makeConstraintsEqualTo(self.view)
+        self.view.addSubview(workspaceView)
         
         let blockBuilder = BlockBuilder(hasPreviousConnection: true, hasNextConnection: true, hasChildConnection: false)
         

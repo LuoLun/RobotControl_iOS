@@ -22,8 +22,8 @@ class FieldLabelView: FieldView {
         label = UILabel()
         super.init()
         
-        self.autolayout_addSubview(label)
-        label.makeConstraintsEqualTo(self, edgeInsets: edgeInsets)
+        self.addSubview(label)
+//        label.makeConstraintsEqualTo(self, edgeInsets: edgeInsets)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -32,5 +32,14 @@ class FieldLabelView: FieldView {
     
     override func didSetField(_ field: Field?) {
         label.text = fieldLabel.text
+    }
+    
+    override func layoutSubviews() {
+        var size = CGSize.zero
+        label.sizeToFit()
+        size.width += edgeInsets.left + label.frame.size.width + edgeInsets.right
+        size.height += edgeInsets.top + label.frame.size.height + edgeInsets.bottom
+        label.frame.origin = CGPoint(x: edgeInsets.left, y: edgeInsets.left)
+        self.frame.size = size
     }
 }

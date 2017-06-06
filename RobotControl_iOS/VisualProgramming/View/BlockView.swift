@@ -15,9 +15,25 @@ class BlockView: UIView {
     init(block: Block) {
         self.block = block
         super.init(frame: CGRect.zero)
+        
+        self.backgroundColor = UIColor.green
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func layoutSubviews() {
+        var size = CGSize.zero
+        var y: CGFloat = 0
+        for subview in subviews {
+            subview.layoutSubviews()
+            subview.frame.origin.y = y
+            subview.frame.origin.x = 0
+            y += subview.frame.size.height
+            size.height += subview.frame.size.height
+            size.width = max(subview.frame.size.width, size.width)
+        }
+        self.frame.size = size
     }
 }
