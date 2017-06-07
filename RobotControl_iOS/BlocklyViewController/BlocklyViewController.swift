@@ -42,8 +42,24 @@ class BlocklyViewController: UIViewController {
         let input3 = BlockInput()
         block2.inputs.append(input3)
         
+        let block3 = blockBuilder.buildBlock()
+        let input4 = FieldInput()
+        block3.inputs.append(input4)
+        let field4 = FieldLabel(text: "demo3")
+        input4.appendField(field4)
+        
+        for i in 0..<10 {
+            let block = blockBuilder.buildBlock()
+            let input = FieldInput()
+            block.inputs.append(input)
+            let field = FieldLabel(text: "auto_gen\(i)")
+            input.appendField(field)
+            workspace.addBlock(block)
+        }
+        
         workspace.addBlock(block1)
         workspace.addBlock(block2)
+        workspace.addBlock(block3)
         
         self.view.layoutSubviews()
                 

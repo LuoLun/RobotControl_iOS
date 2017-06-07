@@ -91,16 +91,18 @@ class BlockInputView: InputView {
         
         var blocksTotalHeight: CGFloat = 0
         
-        if let targetBlock = blockInput.connection.targetBlock {
-//        while subviews[i] is BlockView {
-//            let blockView = subviews[i] as! BlockView
-            let blockView = workspaceView!.viewManager.findViewFor(targetBlock)
+        var childBlock: Block?
+        childBlock = blockInput.connection.targetBlock
+        while childBlock != nil {
+
+            let blockView = workspaceView!.viewManager.findViewFor(childBlock!)
             
             blockView.layoutSubviews()
             
             blocksTotalHeight += blockView.frame.height
             size.width = max(size.width, statementIndent + blockView.frame.width)
             
+            childBlock = childBlock!.nextConnection?.targetBlock
         }
         size.height = (blocksTotalHeight == 0) ? layoutConfig.minBlockInputSize.height : blocksTotalHeight
         

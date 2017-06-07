@@ -69,6 +69,12 @@ class WorkspaceView: LayoutView, WorkspaceListener {
             
             if recognizer.state == .began {
                 
+                // 先把正在拖动的group置于视图层次最上面
+                for block in blockView.block.blockGroup!.blocks {
+                    let blockViewInGroup = viewManager.findViewFor(block)
+                    blockViewInGroup.superview?.bringSubview(toFront: blockViewInGroup)
+                }
+                
                 let savedTargetBlock = blockView.block.previousConnection?.targetBlock
                 
                 // 如果正在移动的方块有前置语句方块，则先断开与前置方块的连接
@@ -77,7 +83,7 @@ class WorkspaceView: LayoutView, WorkspaceListener {
                 // TODO:(#1) 可以只对BlockInputView执行，以优化速度
                 //连接完之后重新绘制边框，以适应变化
                 if savedTargetBlock != nil {
-                    viewManager.findViewFor(savedTargetBlock!).layoutSubviews()
+                    viewManager.findViewFor(savedTargetBlock!.blockGroup!.rootBlock).layoutSubviews()
                 }
                 
                 panBeginPoint = recognizer.location(in: self)
@@ -110,7 +116,7 @@ class WorkspaceView: LayoutView, WorkspaceListener {
                         
                         // TODO:(#1) 可以只对BlockInputView执行，以优化速度
                         //连接完之后重新绘制边框，以适应变化
-                        viewManager.findViewFor(availableConnection.sourceBlock!).layoutSubviews()
+                        viewManager.findViewFor(availableConnection.sourceBlock!.blockGroup!.rootBlock).layoutSubviews()
                     }
                 }
             }
