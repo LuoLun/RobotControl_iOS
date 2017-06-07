@@ -1,0 +1,56 @@
+ [
+  {
+  "name": "move",
+  "inputs": [
+             {
+             "type": "field_input",
+             "fields": [
+                        {
+                        "type": "field_label",
+                        "text": "move"
+                        },
+                        {
+                        "type": "field_variable"
+                        }
+                        ]
+             }
+             ],
+  "has_previous_statement": "true",
+  "has_next_statement": "true"
+  },
+  {
+  "name": "if",
+  "inputs": [
+             {
+             "type": "field_input",
+             "fields": [
+                        {
+                        "type": "field_label",
+                        "text": "if"
+                        },
+                        {
+                        "type": "field_variable",
+                        },
+                        {
+                        "type": "field_label",
+                        "text": "<"
+                        },
+                        {
+                        "type": "field_variable"
+                        }
+                        ]
+             },
+             {
+             "type": "block_input",
+             "fields": [
+                        {
+                        "type": "field_label",
+                        "text": "then"
+                        }
+                        ]
+             }
+             ],
+  "has_previous_statement": "true",
+  "has_next_statement": "true"
+  }
+  ]

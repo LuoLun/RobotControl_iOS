@@ -14,4 +14,9 @@ class FieldLabel: Field {
     init(text: String) {
         self.text = text
     }
+    
+    override func copiedField() -> Field {
+        let fieldLabel = FieldLabel(text: text)
+        return fieldLabel
+    }
 }

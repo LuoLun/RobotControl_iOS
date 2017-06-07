@@ -13,5 +13,9 @@ class FieldVariable: Field {
     func variableManager() -> VariableManager {
         return sourceBlock!.variableManager()!
     }
-    
+ 
+    override func copiedField() -> Field {
+        let fieldVariable = FieldVariable()
+        return fieldVariable
+    }
 }

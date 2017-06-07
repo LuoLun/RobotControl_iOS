@@ -12,6 +12,8 @@ class DemoPickerViewController: UIViewController {
 
     static let Options = [
         "可视化编程 Demo",
+        "可视化编程 Demo (语句块工厂)",
+        "可视化编程 Demo (工具箱)",
         "遥控器 Demo",
         "声控 Demo",
         "轨迹控制 Demo"
@@ -65,6 +67,10 @@ extension DemoPickerViewController: UITableViewDataSource, UITableViewDelegate {
         case 0:
             viewController = BlocklyViewController()
             break
+        case 1:
+            viewController = BlockFactoryViewController()
+        case 2:
+            viewController = BlockToolboxViewController()
         default:
             viewController = UIViewController()
             break

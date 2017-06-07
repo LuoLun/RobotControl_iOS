@@ -21,7 +21,7 @@ class Workspace: NSObject {
     
     let connectionManager: ConnectionManager
     
-    var _blocks = [String: Block]()
+    internal var _blocks = [String: Block]()
     
     func addBlock(_ block: Block) {
         _blocks[block.uuid] = block

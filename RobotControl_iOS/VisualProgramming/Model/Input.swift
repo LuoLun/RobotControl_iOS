@@ -15,7 +15,13 @@ class Input: NSObject {
         return _fields
     }
     
-    weak var sourceBlock: Block?
+    weak var sourceBlock: Block? {
+        didSet {
+            for field in _fields {
+                field.sourceBlock = sourceBlock
+            }
+        }
+    }
     
     func appendField(_ field: Field) {
         _fields.append(field)

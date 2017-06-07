@@ -46,6 +46,14 @@
 		6F6FB34A1EE7C155007545A8 /* FieldVariable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6FB3491EE7C155007545A8 /* FieldVariable.swift */; };
 		6F6FB34C1EE7C168007545A8 /* FieldVariableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6FB34B1EE7C168007545A8 /* FieldVariableView.swift */; };
 		6F6FB34E1EE7CB4C007545A8 /* Variable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6FB34D1EE7CB4C007545A8 /* Variable.swift */; };
+		6F6FB3511EE7D8AE007545A8 /* BlockDef.json in Resources */ = {isa = PBXBuildFile; fileRef = 6F6FB3501EE7D8AE007545A8 /* BlockDef.json */; };
+		6F6FB3541EE7DAD6007545A8 /* Block+JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6FB3531EE7DAD6007545A8 /* Block+JSON.swift */; };
+		6F6FB3561EE7DE19007545A8 /* InputBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6FB3551EE7DE19007545A8 /* InputBuilder.swift */; };
+		6F6FB3581EE7E413007545A8 /* BlockFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6FB3571EE7E413007545A8 /* BlockFactory.swift */; };
+		6F6FB35A1EE7E615007545A8 /* BlockFactoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6FB3591EE7E615007545A8 /* BlockFactoryViewController.swift */; };
+		6F6FB35C1EE7ED8E007545A8 /* Toolbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6FB35B1EE7ED8E007545A8 /* Toolbox.swift */; };
+		6F6FB35E1EE7EEF1007545A8 /* ToolboxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6FB35D1EE7EEF1007545A8 /* ToolboxView.swift */; };
+		6F6FB3601EE7F2BC007545A8 /* BlockToolboxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6FB35F1EE7F2BC007545A8 /* BlockToolboxViewController.swift */; };
 		6F74DAB31EDEED9B003A6B23 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F74DAB21EDEED9B003A6B23 /* AppDelegate.swift */; };
 		6F74DABD1EDEED9B003A6B23 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6F74DABC1EDEED9B003A6B23 /* Assets.xcassets */; };
 		6F74DAC01EDEED9B003A6B23 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6F74DABE1EDEED9B003A6B23 /* LaunchScreen.storyboard */; };
@@ -106,6 +114,14 @@
 		6F6FB3491EE7C155007545A8 /* FieldVariable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FieldVariable.swift; sourceTree = "<group>"; };
 		6F6FB34B1EE7C168007545A8 /* FieldVariableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FieldVariableView.swift; sourceTree = "<group>"; };
 		6F6FB34D1EE7CB4C007545A8 /* Variable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Variable.swift; sourceTree = "<group>"; };
+		6F6FB3501EE7D8AE007545A8 /* BlockDef.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = BlockDef.json; sourceTree = "<group>"; };
+		6F6FB3531EE7DAD6007545A8 /* Block+JSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Block+JSON.swift"; sourceTree = "<group>"; };
+		6F6FB3551EE7DE19007545A8 /* InputBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputBuilder.swift; sourceTree = "<group>"; };
+		6F6FB3571EE7E413007545A8 /* BlockFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlockFactory.swift; sourceTree = "<group>"; };
+		6F6FB3591EE7E615007545A8 /* BlockFactoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BlockFactoryViewController.swift; path = RobotControl_iOS/BlocklyViewController/BlockFactoryViewController.swift; sourceTree = SOURCE_ROOT; };
+		6F6FB35B1EE7ED8E007545A8 /* Toolbox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Toolbox.swift; sourceTree = "<group>"; };
+		6F6FB35D1EE7EEF1007545A8 /* ToolboxView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToolboxView.swift; sourceTree = "<group>"; };
+		6F6FB35F1EE7F2BC007545A8 /* BlockToolboxViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BlockToolboxViewController.swift; path = RobotControl_iOS/VisualProgramming/UI/View/BlockToolboxViewController.swift; sourceTree = SOURCE_ROOT; };
 		6F74DAAF1EDEED9B003A6B23 /* RobotControl_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RobotControl_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F74DAB21EDEED9B003A6B23 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6F74DABC1EDEED9B003A6B23 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -140,8 +156,10 @@
 		6F1662751EE5BB3900F221E0 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				6F6FB3521EE7DABE007545A8 /* JSON */,
 				6F1662761EE5BB3900F221E0 /* Block.swift */,
 				6F1662771EE5BB3900F221E0 /* BlockBuilder.swift */,
+				6F6FB3551EE7DE19007545A8 /* InputBuilder.swift */,
 				6F1662781EE5BB3900F221E0 /* BlockGroup.swift */,
 				6F1662791EE5BB3900F221E0 /* Connection.swift */,
 				6F16627A1EE5BB3900F221E0 /* ConnectionManager.swift */,
@@ -152,6 +170,8 @@
 				6F6FB3471EE7BFF1007545A8 /* VariableManager.swift */,
 				6F6FB3491EE7C155007545A8 /* FieldVariable.swift */,
 				6F6FB34D1EE7CB4C007545A8 /* Variable.swift */,
+				6F6FB3571EE7E413007545A8 /* BlockFactory.swift */,
+				6F6FB35B1EE7ED8E007545A8 /* Toolbox.swift */,
 			);
 			name = Model;
 			path = VisualProgramming/Model;
@@ -190,6 +210,7 @@
 				6F1662C01EE64F0400F221E0 /* ViewBuilder.swift */,
 				6F1662C11EE64F0400F221E0 /* WorkspaceView.swift */,
 				6F6FB34B1EE7C168007545A8 /* FieldVariableView.swift */,
+				6F6FB35D1EE7EEF1007545A8 /* ToolboxView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -228,6 +249,22 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		6F6FB34F1EE7D89D007545A8 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				6F6FB3501EE7D8AE007545A8 /* BlockDef.json */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		6F6FB3521EE7DABE007545A8 /* JSON */ = {
+			isa = PBXGroup;
+			children = (
+				6F6FB3531EE7DAD6007545A8 /* Block+JSON.swift */,
+			);
+			path = JSON;
+			sourceTree = "<group>";
+		};
 		6F74DAA61EDEED9A003A6B23 = {
 			isa = PBXGroup;
 			children = (
@@ -256,6 +293,7 @@
 				6F8603E71EDEF73F00AA4507 /* BlocklyViewController */,
 				6F8603E41EDEF72D00AA4507 /* Utils */,
 				6F74DABC1EDEED9B003A6B23 /* Assets.xcassets */,
+				6F6FB34F1EE7D89D007545A8 /* Resources */,
 				6F74DABE1EDEED9B003A6B23 /* LaunchScreen.storyboard */,
 				6F74DAC11EDEED9B003A6B23 /* Info.plist */,
 			);
@@ -284,6 +322,8 @@
 			isa = PBXGroup;
 			children = (
 				6F1662511EE5A3CA00F221E0 /* BlocklyViewController.swift */,
+				6F6FB3591EE7E615007545A8 /* BlockFactoryViewController.swift */,
+				6F6FB35F1EE7F2BC007545A8 /* BlockToolboxViewController.swift */,
 			);
 			name = BlocklyViewController;
 			path = BloclyViewController;
@@ -373,6 +413,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6F6FB3511EE7D8AE007545A8 /* BlockDef.json in Resources */,
 				6F74DAC01EDEED9B003A6B23 /* LaunchScreen.storyboard in Resources */,
 				6F74DABD1EDEED9B003A6B23 /* Assets.xcassets in Resources */,
 			);
@@ -395,6 +436,8 @@
 				6F1662CE1EE650EC00F221E0 /* PathHelper.swift in Sources */,
 				6F1662CA1EE64F0400F221E0 /* WorkspaceView.swift in Sources */,
 				6F1662C31EE64F0400F221E0 /* BlockView.swift in Sources */,
+				6F6FB35C1EE7ED8E007545A8 /* Toolbox.swift in Sources */,
+				6F6FB35A1EE7E615007545A8 /* BlockFactoryViewController.swift in Sources */,
 				6F1662871EE5BB3900F221E0 /* Field.swift in Sources */,
 				6F16629C1EE6483600F221E0 /* LayoutConfig.swift in Sources */,
 				6F1662521EE5A3CA00F221E0 /* BlocklyViewController.swift in Sources */,
@@ -407,9 +450,14 @@
 				6F16628E1EE5C36F00F221E0 /* Input.swift in Sources */,
 				6F1662C51EE64F0400F221E0 /* FieldLabelView.swift in Sources */,
 				6F1662C91EE64F0400F221E0 /* ViewBuilder.swift in Sources */,
+				6F6FB3541EE7DAD6007545A8 /* Block+JSON.swift in Sources */,
+				6F6FB3581EE7E413007545A8 /* BlockFactory.swift in Sources */,
+				6F6FB3561EE7DE19007545A8 /* InputBuilder.swift in Sources */,
 				6F1662841EE5BB3900F221E0 /* BlockGroup.swift in Sources */,
 				6F1662851EE5BB3900F221E0 /* Connection.swift in Sources */,
 				6F1662861EE5BB3900F221E0 /* ConnectionManager.swift in Sources */,
+				6F6FB35E1EE7EEF1007545A8 /* ToolboxView.swift in Sources */,
+				6F6FB3601EE7F2BC007545A8 /* BlockToolboxViewController.swift in Sources */,
 				6F1662C61EE64F0400F221E0 /* FieldView.swift in Sources */,
 				6F1662C41EE64F0400F221E0 /* DefaultBlockView.swift in Sources */,
 				6F1662821EE5BB3900F221E0 /* Block.swift in Sources */,

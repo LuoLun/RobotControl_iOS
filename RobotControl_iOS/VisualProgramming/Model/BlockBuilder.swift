@@ -14,6 +14,8 @@ class BlockBuilder: NSObject {
     let hasPreviousConnection: Bool
     let hasNextConnection: Bool
     
+    var inputBuilders: [InputBuilder]?
+    
     var workspace: Workspace?
     
     init(name: String, hasPreviousConnection: Bool, hasNextConnection: Bool) {
@@ -35,6 +37,11 @@ class BlockBuilder: NSObject {
         block.blockGroup?.addBlock(block)
         
         block.workspace = workspace
+        
+        for inputBuilder in inputBuilders! {
+            let input = inputBuilder.buildInput()
+            block.inputs.append(input)
+        }
         
         return block
     }

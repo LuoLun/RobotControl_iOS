@@ -68,6 +68,25 @@ class Block: NSObject {
     
     func copiedBlock() -> Block {
         let blockBuilder = BlockBuilder(name: name, hasPreviousConnection: previousConnection != nil, hasNextConnection: nextConnection != nil)
+        blockBuilder.workspace = self.workspace
+        
+        blockBuilder.inputBuilders = [InputBuilder]()
+        for input in inputs {
+            let inputType: InputBuilder.InputType
+            if input is FieldInput {
+                inputType = .FieldInput
+            } else if input is BlockInput {
+                inputType = .BlockInput
+            } else {
+                fatalError()
+            }
+            
+            let inputBuilder = InputBuilder(inputType: inputType)
+            inputBuilder.fields = [Field]()
+            input.fields.forEach { inputBuilder.fields?.append($0.copiedField()) }
+            
+            blockBuilder.inputBuilders!.append(inputBuilder)
+        }
         return blockBuilder.buildBlock()
     }
     

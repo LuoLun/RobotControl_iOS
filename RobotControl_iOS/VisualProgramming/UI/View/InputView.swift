@@ -72,12 +72,12 @@ class BlockInputView: InputView {
     override func layoutSubviews() {
         var size = CGSize.zero
         var x: CGFloat = 0
-        var y: CGFloat = 0
+        let y: CGFloat = 0
         
         statementIndent = layoutConfig.minStatementIndent
         
         var i = 0
-        while subviews.count > 0 && subviews[i] is FieldView {
+        while i < subviews.count && subviews[i] is FieldView {
             let fieldView = subviews[i] as! FieldView
             
             fieldView.layoutSubviews()

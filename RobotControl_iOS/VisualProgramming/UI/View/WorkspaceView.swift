@@ -12,7 +12,7 @@ protocol WorkspaceViewDelegate: class {
     func presentAlertController(_ alertController: UIAlertController)
 }
 
-class WorkspaceView: LayoutView, WorkspaceListener {
+class WorkspaceView: LayoutView {
 
     weak var delegate: WorkspaceViewDelegate?
     
@@ -33,36 +33,22 @@ class WorkspaceView: LayoutView, WorkspaceListener {
         super.init(layoutConfig: viewBuilder.layoutConfig)
         
         connectionManager.delegate = self
+        workspace.listener = self
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // Workspace listener
-    
-    func workspaceDidAddBlock(_ block: Block) {
-        let blockView = viewBuilder.buildBlockView(block)
-        self.addSubview(blockView)
-        
-        _blockViews[block.uuid] = blockView
-        
+    func addTrackingGesture(for blockView: BlockView) {
         let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(panGesture(_:)))
         blockView.addGestureRecognizer(panGestureRecognizer)
-        
-        viewManager.register(block, for: blockView)
     }
     
-    func workspaceDidRemoveBlock(_ block: Block) {
-        let blockView = _blockViews[block.uuid]
-        blockView!.removeFromSuperview()
-        _blockViews[block.uuid] = nil
-        
+    func removeTrackingGesture(for blockView: BlockView?) {
         blockView!.removeGestureRecognizer((blockView?.gestureRecognizers![0])!)
-        
-        viewManager.unregister(blockView!)
     }
-
+    
     // Pan Gesture
     
     var panBeginPoint = CGPoint()
@@ -87,7 +73,7 @@ class WorkspaceView: LayoutView, WorkspaceListener {
                 connectionManager.disconnect(blockView.block.previousConnection!)
                 
                 // TODO:(#1) 可以只对BlockInputView执行，以优化速度
-                //连接完之后重新绘制边框，以适应变化
+                // 断开链接之后重新绘制边框，以适应变化
                 if savedTargetBlock != nil {
                     viewManager.findViewFor(savedTargetBlock!.blockGroup!.rootBlock).layoutSubviews()
                 }
@@ -122,7 +108,7 @@ class WorkspaceView: LayoutView, WorkspaceListener {
                         
                         // TODO:(#1) 可以只对BlockInputView执行，以优化速度
                         //连接完之后重新绘制边框，以适应变化
-                        viewManager.findViewFor(availableConnection.sourceBlock!.blockGroup!.rootBlock).layoutSubviews()
+                        availableConnection.sourceBlock!.blockGroup!.blocks.forEach { viewManager.findViewFor($0).layoutSubviews() }
                     }
                 }
             }
@@ -136,6 +122,31 @@ class WorkspaceView: LayoutView, WorkspaceListener {
     func presentAlertController(_ alertController: UIAlertController) {
         delegate!.presentAlertController(alertController)
     }
+}
+
+// MARK: - Workspace listener
+extension WorkspaceView: WorkspaceListener {
+    func workspaceDidAddBlock(_ block: Block) {
+        let blockView = viewBuilder.buildBlockView(block)
+        self.addSubview(blockView)
+        
+        _blockViews[block.uuid] = blockView
+        
+        addTrackingGesture(for: blockView)
+        
+        viewManager.register(block, for: blockView)
+    }
+    
+    func workspaceDidRemoveBlock(_ block: Block) {
+        let blockView = _blockViews[block.uuid]
+        blockView!.removeFromSuperview()
+        _blockViews[block.uuid] = nil
+        
+        removeTrackingGesture(for: blockView)
+        
+        viewManager.unregister(blockView!)
+    }
+
 }
 
 extension WorkspaceView:  ConnectionManagerDelegate {

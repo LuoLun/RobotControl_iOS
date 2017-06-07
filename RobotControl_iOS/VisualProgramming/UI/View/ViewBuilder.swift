@@ -31,6 +31,8 @@ class ViewBuilder: NSObject {
         }
         
         blockView.block.directConnections.forEach{ $0.delegate = blockView }
+        blockView.block.directConnections.forEach{ $0.positionListener = blockView }
+
         
         blockView.workspaceView = workspaceView
         return blockView

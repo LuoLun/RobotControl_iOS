@@ -11,4 +11,10 @@ import UIKit
 class Field: NSObject {
     weak var sourceInput: Input?
     weak var sourceBlock: Block?
+    
+    // MARK: - Subclass
+    func copiedField() -> Field {
+        // Subclass should override this method to copy a field.
+        fatalError()
+    }
 }

@@ -29,7 +29,6 @@ class DefaultBlockView: BlockView {
     var bezierPath: UIBezierPath?
     
     func blockBackgroundBezierPath() -> UIBezierPath {
-        _positionOfConnections.removeAll()
         
         let path = BlockBezierPath()
         
@@ -102,6 +101,17 @@ class DefaultBlockView: BlockView {
         path.addLineTo(x: 0, y: 0, relative: false)
         
         self.frame.size.height = height
+
+        // 因为连接的位置已经更新，因此要告诉对等连接另一方这个连接位置已经更新，让对方根据连接的位置改变自身位置
+
+        for connection in _positionOfConnections.keys {
+            // 如果是前置连接，则不用告知，因为位置的决定顺序是“前置连接->后置连接“
+            if connection.category == .previous {
+                continue
+            }
+            
+            connection.targetConnection?.positionListener?.updateWithoutOperation(connectionPosition: workspacePositionOf(connection), connection: connection.targetConnection!)
+        }
         
         self.bezierPath = path
         return path
@@ -156,3 +166,11 @@ class DefaultBlockView: BlockView {
     }
 }
 
+extension BlockView: ConnectionPositionListener {
+    func updateWithoutOperation(connectionPosition: CGPoint, connection: Connection) {
+        let posSelfConn = connection.workspacePosition()
+        let delta = CGPoint(x: connectionPosition.x - posSelfConn.x, y: connectionPosition.y - posSelfConn.y)
+        self.frame.origin.x += delta.x
+        self.frame.origin.y += delta.y
+    }
+}

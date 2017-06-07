@@ -12,9 +12,15 @@ protocol ConnectionDelegate: class {
     func workspacePositionOf(_ connection: Connection) -> CGPoint
 }
     
+protocol ConnectionPositionListener: class {
+    // 没有连接和断开操作的情况下，需要更新连击的位置（比如说某个前赴语句方块嵌入了一个子语句方块）
+    func updateWithoutOperation(connectionPosition: CGPoint, connection: Connection)
+}
+    
 class Connection: NSObject {
 
     weak var delegate: ConnectionDelegate?
+    weak var positionListener: ConnectionPositionListener?
     
     enum Category {
         case previous
