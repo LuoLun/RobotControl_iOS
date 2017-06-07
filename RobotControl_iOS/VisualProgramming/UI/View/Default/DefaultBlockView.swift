@@ -73,6 +73,8 @@ class DefaultBlockView: BlockView {
             }
             else if inputView is BlockInputView {
                 let blockInputView = inputView as! BlockInputView
+                blockInputView.layoutSubviews()
+                
                 path.addLineTo(x: blockInputView.statementIndent + notchWidth, y: path.currentY(), relative: false)
                 _positionOfConnections[blockInputView.blockInput.connection] = CGPoint(x: path.currentX() - notchWidth / 2, y: path.currentY() + notchHeight / 2)
                 PathHelper.addNotch(toPath: path, drawLeftToRight: false, notchWidth: notchWidth, notchHeight: notchHeight)

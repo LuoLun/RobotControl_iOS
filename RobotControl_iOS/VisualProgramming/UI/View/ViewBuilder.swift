@@ -11,6 +11,7 @@ import UIKit
 class ViewBuilder: NSObject {
     
     var layoutConfig: LayoutConfig
+    var workspaceView: WorkspaceView?
     
     init(layoutConfig: LayoutConfig) {
         self.layoutConfig = layoutConfig
@@ -34,16 +35,19 @@ class ViewBuilder: NSObject {
     
     func buildInputView(_ input: Input) -> InputView {
         
+        var view: InputView?
         if input is FieldInput {
-            return buildFieldInputView(input as! FieldInput)
+            view = buildFieldInputView(input as! FieldInput)
         }
         else if input is BlockInput {
-            return buildBlockInputView(input as! BlockInput)
+            view = buildBlockInputView(input as! BlockInput)
         }
         else {
             fatalError()
         }
         
+        view!.workspaceView = workspaceView
+        return view!
     }
     
     func buildFieldInputView(_ input: FieldInput) -> FieldInputView {

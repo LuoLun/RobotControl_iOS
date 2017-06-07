@@ -19,6 +19,8 @@ class BlocklyViewController: UIViewController {
         
         let workspace = Workspace()
         let workspaceView = WorkspaceView(workspace: workspace, viewBuilder: ViewBuilder(layoutConfig: layoutConfig))
+        workspaceView.viewBuilder.workspaceView = workspaceView
+        
         workspace.listener = workspaceView
         workspaceView.frame = self.view.frame
         

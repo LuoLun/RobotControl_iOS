@@ -69,8 +69,16 @@ class WorkspaceView: LayoutView, WorkspaceListener {
             
             if recognizer.state == .began {
                 
+                let savedTargetBlock = blockView.block.previousConnection?.targetBlock
+                
                 // 如果正在移动的方块有前置语句方块，则先断开与前置方块的连接
                 connectionManager.disconnect(blockView.block.previousConnection!)
+                
+                // TODO:(#1) 可以只对BlockInputView执行，以优化速度
+                //连接完之后重新绘制边框，以适应变化
+                if savedTargetBlock != nil {
+                    viewManager.findViewFor(savedTargetBlock!).layoutSubviews()
+                }
                 
                 panBeginPoint = recognizer.location(in: self)
                 panBlockGruopBeginPoints.removeAll()
@@ -99,6 +107,10 @@ class WorkspaceView: LayoutView, WorkspaceListener {
                         catch {
                             fatalError()
                         }
+                        
+                        // TODO:(#1) 可以只对BlockInputView执行，以优化速度
+                        //连接完之后重新绘制边框，以适应变化
+                        viewManager.findViewFor(availableConnection.sourceBlock!).layoutSubviews()
                     }
                 }
             }

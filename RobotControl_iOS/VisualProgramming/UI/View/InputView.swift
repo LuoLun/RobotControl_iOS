@@ -10,6 +10,7 @@ import UIKit
 
 class InputView: LayoutView {
     let input: Input
+    weak var workspaceView: WorkspaceView?
     
     init(input: Input, layoutConfig: LayoutConfig) {
         self.input = input
@@ -70,13 +71,8 @@ class BlockInputView: InputView {
         
         statementIndent = layoutConfig.minStatementIndent
         
-        if subviews.count == 0 {
-            self.frame.size = layoutConfig.minBlockInputSize
-            return
-        }
-        
         var i = 0
-        while subviews[i] is FieldView {
+        while subviews.count > 0 && subviews[i] is FieldView {
             let fieldView = subviews[i] as! FieldView
             
             fieldView.layoutSubviews()
@@ -89,23 +85,24 @@ class BlockInputView: InputView {
             i += 1
         }
         
-        statementIndent = size.width
+        if subviews.count > 0 {
+            statementIndent = size.width
+        }
         
         var blocksTotalHeight: CGFloat = 0
-        while subviews[i] is BlockView {
-            let blockView = subviews[i] as! BlockView
+        
+        if let targetBlock = blockInput.connection.targetBlock {
+//        while subviews[i] is BlockView {
+//            let blockView = subviews[i] as! BlockView
+            let blockView = workspaceView!.viewManager.findViewFor(targetBlock)
             
             blockView.layoutSubviews()
-            blockView.frame.origin.x = x
-            blockView.frame.origin.y = y
-            y += blockView.frame.height
             
             blocksTotalHeight += blockView.frame.height
             size.width = max(size.width, statementIndent + blockView.frame.width)
             
-            i += 1
         }
-        size.height = max(size.height, blocksTotalHeight)
+        size.height = (blocksTotalHeight == 0) ? layoutConfig.minBlockInputSize.height : blocksTotalHeight
         
         if i < subviews.count {
             fatalError()
