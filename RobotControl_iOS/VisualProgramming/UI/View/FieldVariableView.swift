@@ -10,18 +10,35 @@ import UIKit
 
 class FieldVariableView: FieldView {
 
+    typealias VariableWithNs = (name: String, namespace: String)
+    
+    var sourceBlock: Block {
+        return self.sourceInputView!.sourceBlockView!.block
+    }
+    
     var fieldVariable: FieldVariable? {
         return field as? FieldVariable
     }
     
-    var variableManager: VariableManager? {
-        return fieldVariable!.variableManager()
+    var variableManager: VariableManager {
+        return self.sourceInputView!.sourceBlockView!.block.variableManager()
+    }
+    
+    var variableManagers: Set<VariableManager> {
+        return variableManagers(for: self.sourceInputView!.sourceBlockView!.block)
     }
     
     let _button: UIButton
     
-    private(set) var selectedVariable: Variable?
-
+    var selectedVariable: Variable? {
+        get {
+            return fieldVariable!._selectedVariable
+        }
+        set {
+            fieldVariable!._selectedVariable = newValue
+        }
+    }
+    
     override init(layoutConfig: LayoutConfig) {
         let button = UIButton(type: .roundedRect)
         _button = button
@@ -29,6 +46,7 @@ class FieldVariableView: FieldView {
         
         button.addTarget(self, action: #selector(didTapButton), for: .touchUpInside)
         
+        button.titleLabel!.font = layoutConfig.font
         button.setTitle(fieldVariable?.variableManager().variables.first?.name.appending("(\(fieldVariable!.variableManager().namespace()))") ?? "添加新变量", for: .normal)
         self.addSubview(button)
     }
@@ -41,11 +59,19 @@ class FieldVariableView: FieldView {
         let alertController = UIAlertController(title: "选择变量", message: "请选择一个变量", preferredStyle: .actionSheet)
         
         let handler = { (action: UIAlertAction) -> Void in
-            self.variableManager!.variables.forEach({ (variable: Variable) in
-                if action.title! == variable.name {
-                    self.selectedVariable = variable
+            let title = action.title!
+            let components = title.components(separatedBy: CharacterSet.init(charactersIn: "()"))
+            let name = components[0]
+            let namespace = components[1]            
+            
+            for variableManager in self.variableManagers {
+                for variable in variableManager.variables {
+                    if variable.name == name && namespace == variableManager.namespace() {
+                        self.selectedVariable = variable
+                        break
+                    }
                 }
-            })
+            }
             self._button.setTitle(action.title, for: .normal)
         }
         
@@ -56,7 +82,7 @@ class FieldVariableView: FieldView {
             self.removeVariable()
         }
         
-        var actions = variableManager!.variables.map { UIAlertAction(title: $0.name, style: .default, handler: handler) }
+        var actions = self.variables(for: self.sourceBlock).map { UIAlertAction(title: $0.name + "(\($0.namespace))", style: .default, handler: handler) }
         actions.append(UIAlertAction(title: "添加新变量", style: .default, handler: addVariableHandler))
         actions.append(UIAlertAction(title: "删除变量", style: .destructive, handler: removeVariableHandler))
         actions.append(UIAlertAction(title: "取消", style: .cancel, handler: nil))
@@ -78,7 +104,7 @@ class FieldVariableView: FieldView {
             if variableName == "" {
                 return
             }
-            self.variableManager?.add(variableName)
+            self.variableManager.add(variableName)
         }))
         self.workspaceView!.presentAlertController(addVariableAlert)
     }
@@ -87,15 +113,57 @@ class FieldVariableView: FieldView {
         let alertController = UIAlertController(title: "选择变量", message: "请选择一个变量", preferredStyle: .actionSheet)
         
         let handler = { (action: UIAlertAction) -> Void in
-            let variableToRemove = action.title!
-            self.variableManager?.remove(variableToRemove)
+            let variableWithNs = self.variableNameAndNamespace(title: action.title!)
+            let variableManager = self.variableManager(with: variableWithNs.namespace)!
+            variableManager.remove(variableWithNs.name)
         }
         
-        var actions = variableManager?.variables.map{ UIAlertAction(title: $0.name, style: .default, handler: handler) }
-        actions?.append(UIAlertAction(title: "取消", style: .cancel, handler: nil))
-        actions?.forEach{ alertController.addAction($0) }
+        var actions = variableManager.variables.map{ UIAlertAction(title: $0.name, style: .default, handler: handler) }
+        actions.append(UIAlertAction(title: "取消", style: .cancel, handler: nil))
+        actions.forEach{ alertController.addAction($0) }
         
         workspaceView!.presentAlertController(alertController)
+    }
+    
+    // MAKR: - Variables
+    
+    func variableManagers(for block: Block) -> Set<VariableManager> {
+        var managers = Set<VariableManager>()
+        var block: Block? = block
+        while block != nil {
+            if block!._variableManager != nil {
+                managers.insert(block!._variableManager!)
+            }
+            block = block?.parentBlock()
+        }
+        managers.insert(workspaceView!.workspace.variableManager)
+        return managers
+    }
+    
+    func variables(for block: Block) -> [VariableWithNs] {
+        var variables = [VariableWithNs]()
+        for variableManager in self.variableManagers(for: block) {
+            for variable in variableManager.variables {
+                variables.append((name:variable.name, namespace: variableManager.namespace()))
+            }
+        }
+        return variables
+    }
+    
+    func variableNameAndNamespace(title: String) -> VariableWithNs {
+        let components = title.components(separatedBy: CharacterSet.init(charactersIn: "()"))
+        let name = components[0]
+        let namespace = components[1]
+        return (name: name, namespace: namespace)
+    }
+    
+    func variableManager(with namespace: String) -> VariableManager? {
+        for variableManager in variableManagers {
+            if variableManager.namespace() == namespace {
+                return variableManager
+            }
+        }
+        return nil
     }
     
     // MAKR: - Layout subviews

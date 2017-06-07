@@ -10,6 +10,7 @@
                         "text": "move"
                         },
                         {
+                        "name": "var_move_distance",
                         "type": "field_variable"
                         }
                         ]
@@ -29,6 +30,7 @@
                         "text": "if"
                         },
                         {
+                        "name": "var_left",
                         "type": "field_variable",
                         },
                         {
@@ -36,11 +38,13 @@
                         "text": "<"
                         },
                         {
+                        "name": "var_right",
                         "type": "field_variable"
                         }
                         ]
              },
              {
+             "name": "then",
              "type": "block_input",
              "fields": [
                         {

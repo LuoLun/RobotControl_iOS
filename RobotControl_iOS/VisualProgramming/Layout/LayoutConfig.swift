@@ -23,4 +23,6 @@ class LayoutConfig: NSObject {
     let minStatementIndent: CGFloat = 30
     
     let connectingDistance: CGFloat = 45
+    
+    let font = UIFont.systemFont(ofSize: 14)
 }

@@ -20,6 +20,7 @@ class FieldLabelView: FieldView {
         label = UILabel()
         super.init(layoutConfig: layoutConfig)
         
+        label.font = layoutConfig.font
         self.addSubview(label)
 //        label.makeConstraintsEqualTo(self, edgeInsets: edgeInsets)
     }

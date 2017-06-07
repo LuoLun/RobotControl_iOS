@@ -1,0 +1,16 @@
+{
+    "move": [
+             {"text": "move ("},
+             {"field": "var_move_distance"},
+             {"text": ");"}
+             ],
+    "if": [
+           {"text": "if (\n"},
+           {"field": "var_left"},
+           {"text": " < "},
+           {"field": "var_right"},
+           {"text": ") { \n"},
+           {"block_input": "then"},
+           {"text": "}\n"}
+           ]
+}

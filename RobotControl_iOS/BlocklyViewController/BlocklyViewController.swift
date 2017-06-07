@@ -31,32 +31,32 @@ class BlocklyViewController: UIViewController {
         blockBuilder.workspace = workspace
         
         let block1 = blockBuilder.buildBlock()
-        let input1 = FieldInput()
-        let field1 = FieldLabel(text: "demo")
+        let input1 = FieldInput(name: "")
+        let field1 = FieldLabel(name: "test", text: "demo")
         block1.inputs.append(input1)
         input1.appendField(field1)
         
         let block2 = blockBuilder.buildBlock()
-        let input2 = FieldInput()
+        let input2 = FieldInput(name: "")
         block2.inputs.append(input2)
-        let field2 = FieldLabel(text: "demo2")
+        let field2 = FieldLabel(name: "test2", text: "demo2")
         input2.appendField(field2)
-        let input3 = BlockInput()
+        let input3 = BlockInput(name: "")
         block2.inputs.append(input3)
         
         let block3 = blockBuilder.buildBlock()
-        let input4 = FieldInput()
+        let input4 = FieldInput(name: "")
         block3.inputs.append(input4)
-        let field4 = FieldLabel(text: "demo3")
+        let field4 = FieldLabel(name: "test3", text: "demo3")
         input4.appendField(field4)
-        let field5 = FieldVariable()
+        let field5 = FieldVariable(name: "test4")
         input4.appendField(field5)
         
         for i in 0..<10 {
             let block = blockBuilder.buildBlock()
-            let input = FieldInput()
+            let input = FieldInput(name: "")
             block.inputs.append(input)
-            let field = FieldLabel(text: "auto_gen\(i)")
+            let field = FieldLabel(name: "test\(i)", text: "auto_gen\(i)")
             input.appendField(field)
             workspace.addBlock(block)
         }

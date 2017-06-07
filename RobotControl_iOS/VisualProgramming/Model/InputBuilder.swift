@@ -17,9 +17,11 @@ class InputBuilder: NSObject {
     var fields: [Field]?
     
     let inputType: InputType
+    let inputName: String
     
-    init(inputType: InputType) {
+    init(name: String, inputType: InputType) {
         self.inputType = inputType
+        self.inputName = name
         super.init()
     }
     
@@ -28,9 +30,9 @@ class InputBuilder: NSObject {
         let input: Input
         switch inputType {
         case .FieldInput:
-            input = FieldInput()
+            input = FieldInput(name: inputName)
         case .BlockInput:
-            input = BlockInput()
+            input = BlockInput(name: inputName)
         }
         
         for field in fields! {

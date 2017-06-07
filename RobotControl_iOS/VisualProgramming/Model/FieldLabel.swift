@@ -11,12 +11,13 @@ import UIKit
 class FieldLabel: Field {
     let text: String
     
-    init(text: String) {
+    init(name: String, text: String) {
         self.text = text
+        super.init(name: name)
     }
     
     override func copiedField() -> Field {
-        let fieldLabel = FieldLabel(text: text)
+        let fieldLabel = FieldLabel(name: name, text: text)
         return fieldLabel
     }
 }

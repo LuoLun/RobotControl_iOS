@@ -12,9 +12,22 @@ class Field: NSObject {
     weak var sourceInput: Input?
     weak var sourceBlock: Block?
     
+    let name: String
+    
+    init(name: String) {
+        self.name = name
+        super.init()
+    }
+    
     // MARK: - Subclass
     func copiedField() -> Field {
         // Subclass should override this method to copy a field.
+        fatalError()
+    }
+    
+    // MARK: - Compile
+    
+    func codeValue() throws -> String {
         fatalError()
     }
 }

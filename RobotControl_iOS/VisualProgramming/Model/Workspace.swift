@@ -44,6 +44,13 @@ class Workspace: NSObject {
         connectionManager = ConnectionManager()
         variableManager = VariableManager()
         super.init()
+        variableManager.delegate = self
+    }
+}
+
+extension Workspace: VariableManagerDelegate {
+    func namespace() -> String {
+        return Block.GlobalNameSpace
     }
 }
 

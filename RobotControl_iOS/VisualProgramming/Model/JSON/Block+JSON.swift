@@ -15,6 +15,10 @@ extension Block {
             throw BlockJsonError("Name missed or had wrong format.")
         }
         
+        if name == Block.GlobalNameSpace {
+            throw BlockJsonError("`Global` is reserved word, and cannot be the name of block.")
+        }
+        
         guard let inputsJson = json["inputs"] as? Array<[String: Any]> else {
             throw BlockJsonError("Input list missed or had wrong format.")
         }
@@ -24,6 +28,9 @@ extension Block {
             guard let inputTypeString = inputJson["type"] as? String else {
                 throw BlockJsonError("Input type missed or had wrong format.")
             }
+            
+            let inputName = inputJson["name"] as? String ?? ""
+            
             guard let fieldsJson = inputJson["fields"] as? Array<[String: Any]> else {
                 throw BlockJsonError("Fields list missed or had wrong format.")
             }
@@ -38,19 +45,20 @@ extension Block {
                 throw BlockJsonError("Unknown input type \(inputTypeString)")
             }
             
-            let inputBuilder = InputBuilder(inputType: inputType)
+            let inputBuilder = InputBuilder(name: inputName, inputType: inputType)
             var fields = [Field]()
             for fieldJson in fieldsJson {
                 guard let fieldTypeString = fieldJson["type"] as? String else {
                     throw BlockJsonError("Missing field type or it has wrong format.")
                 }
                 
+                let fieldName = fieldJson["name"] as? String ?? ""
                 let field: Field
                 switch fieldTypeString {
                 case "field_label":
-                    field = try fieldLabel(with: fieldJson)
+                    field = try fieldLabel(with: fieldJson, name: fieldName)
                 case "field_variable":
-                    field = FieldVariable()
+                    field = FieldVariable(name: fieldName)
                 default:
                     throw BlockJsonError("Unknown field type \(fieldTypeString)")
                 }
@@ -73,12 +81,12 @@ extension Block {
  
     // MARK: - Field
     
-    class func fieldLabel(with fieldJson: [String: Any]) throws -> FieldLabel {
+    class func fieldLabel(with fieldJson: [String: Any], name: String) throws -> FieldLabel {
         guard let text = fieldJson["text"] as? String else {
             throw BlockJsonError("Field label msut have a `test` item.")
         }
         
-        let fieldLabel = FieldLabel(text: text)
+        let fieldLabel = FieldLabel(name: name, text: text)
         return fieldLabel
     }
 }

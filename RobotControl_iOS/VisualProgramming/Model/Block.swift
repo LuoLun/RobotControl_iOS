@@ -19,6 +19,8 @@ class Block: NSObject {
     
     var _variableManager: VariableManager?
     
+    static let GlobalNameSpace = "Global"
+    
     var directConnections: [Connection] {
         var connections = [Connection]()
         if let previousConnection = previousConnection {
@@ -45,7 +47,7 @@ class Block: NSObject {
                     blockInput.connection.sourceBlock = self
                     
                     // 如果能够容纳子Block，则这个block需要有一个变量管理器
-                    _variableManager = variableManager()
+                    _variableManager = VariableManager()
                     _variableManager!.delegate = self
                 }
             }
@@ -81,7 +83,7 @@ class Block: NSObject {
                 fatalError()
             }
             
-            let inputBuilder = InputBuilder(inputType: inputType)
+            let inputBuilder = InputBuilder(name: input.name, inputType: inputType)
             inputBuilder.fields = [Field]()
             input.fields.forEach { inputBuilder.fields?.append($0.copiedField()) }
             
@@ -92,6 +94,28 @@ class Block: NSObject {
     
     // MARK: Field
 
+    func firstFieldWith(name: String) -> Field? {
+        for input in inputs {
+            for field in input.fields {
+                if field.name == name {
+                    return field
+                }
+            }
+        }
+        return nil
+    }
+    
+    // MAKR: - Input
+    
+    func firstInputWith(name: String) -> Input? {
+        for input in inputs {
+            if input.name == name {
+                return input
+            }
+        }
+        return nil
+    }
+    
     // MARK: - Debug description
     
     func debugDescription(indent: Int) -> String {
@@ -122,32 +146,62 @@ class Block: NSObject {
         var block: Block? = self
         while block != nil {
             if let targetCategory = block?.previousConnection?.targetConnection?.category,
-                let targetBlock = block?.previousConnection?.targetBlock, targetCategory == .child {
+                let targetBlock = block?.previousConnection?.targetBlock,
+                targetCategory == .child {
                 return targetBlock
             }
             
-            block = block?.previousConnection?.targetBlock
+            block = block!.previousConnection?.targetBlock
         }
         return nil
     }
     
-    func variableManager() -> VariableManager? {
-        return _variableManager ?? parentBlock()?.variableManager() ?? workspace!.variableManager
+    func firstBlockInSameLevel() -> Block {
+        var block = self
+        while true {
+            if let previousConnection = block.previousConnection
+            , let previous = previousConnection.targetBlock,
+                previousConnection.targetConnection?.category == .next {
+                block = previous
+            } else {
+                return block
+            }
+        }
     }
     
-    func parentVariableManager() -> VariableManager? {
-        return parentBlock()?.variableManager()
+    func orderInSameLevel() -> Int {
+        let firstInSameLevel = firstBlockInSameLevel()
+        var i = 0
+        var block = self
+        while block != firstInSameLevel {
+            block = block.previousConnection!.targetBlock!
+            i += 1
+        }
+        return i
+    }
+    
+    func variableManager() -> VariableManager {
+        var block: Block? = self
+        while block != nil {
+            if block!._variableManager != nil {
+                return block!._variableManager!
+            }
+            block = block!.parentBlock()
+        }
+        
+        return workspace!.variableManager
     }
 }
 
 extension Block: VariableManagerDelegate {
     func namespace() -> String {
-        var block: Block? = self
+        var block: Block? = self.parentBlock()
         var namespace = ""
         while block != nil {
-            namespace = block!.name + "." + namespace
+            namespace = namespace + "." + block!.name + String(block!.orderInSameLevel())
             block = block?.parentBlock()
         }
+        namespace = Block.GlobalNameSpace + "." + namespace
         return namespace
     }
 }
