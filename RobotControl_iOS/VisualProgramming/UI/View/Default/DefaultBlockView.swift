@@ -24,6 +24,10 @@ class DefaultBlockView: BlockView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MAKR: - Shape(形状)
+    
+    var bezierPath: UIBezierPath?
+    
     func blockBackgroundBezierPath() -> UIBezierPath {
         _positionOfConnections.removeAll()
         
@@ -38,7 +42,15 @@ class DefaultBlockView: BlockView {
             _positionOfConnections[self.block.previousConnection!] = CGPoint(x: path.currentX() + notchWidth / 2, y: path.currentY() + notchHeight / 2)
             PathHelper.addNotch(toPath: path, drawLeftToRight: true, notchWidth: notchWidth, notchHeight: notchHeight)
         }
-        path.addLineTo(x: self.frame.width, y: 0, relative: false)
+        
+        var length:CGFloat = 0
+        if subviews.count > 0 {
+            subviews[0].layoutSubviews()
+            length = subviews[0].frame.width
+        } else {
+            length = self.frame.width
+        }
+        path.addLineTo(x: length, y: 0, relative: false)
         
         // Head vertical space
         path.addLineTo(x: 0, y: 8, relative: true)
@@ -64,13 +76,17 @@ class DefaultBlockView: BlockView {
                 path.addLineTo(x: blockInputView.statementIndent + notchWidth, y: path.currentY(), relative: false)
                 _positionOfConnections[blockInputView.blockInput.connection] = CGPoint(x: path.currentX() - notchWidth / 2, y: path.currentY() + notchHeight / 2)
                 PathHelper.addNotch(toPath: path, drawLeftToRight: false, notchWidth: notchWidth, notchHeight: notchHeight)
-                path.addLineTo(x: path.currentY(), y: blockInputView.frame.height, relative: false)
+                path.addLineTo(x: 0, y: blockInputView.frame.height, relative: true)
                 PathHelper.addNotch(toPath: path, drawLeftToRight: true, notchWidth: notchWidth, notchHeight: notchHeight)
                 path.addLineTo(x: lastInputWidth ?? self.frame.width, y: path.currentY(), relative: false)
             }
         }
         
-        path.addLineTo(x: 0, y: 4, relative: true)
+        if let last = subviews.last, last is BlockInputView {
+            path.addLineTo(x: 0, y: 15, relative: true)
+        } else {
+            path.addLineTo(x: 0, y: 4, relative: true)
+        }
         
         if self.block.nextConnection != nil {
             path.addLineTo(x: notchWidth, y: path.currentY(), relative: false)
@@ -80,8 +96,12 @@ class DefaultBlockView: BlockView {
         else {
             path.addLineTo(x: 0, y: path.currentY(), relative: false)
         }
+        let height = path.currentY()
         path.addLineTo(x: 0, y: 0, relative: false)
         
+        self.frame.size.height = height
+        
+        self.bezierPath = path
         return path
     }
     
@@ -107,6 +127,8 @@ class DefaultBlockView: BlockView {
         self.setNeedsDisplay()
     }
     
+    // MARK: - ConnectionDelegate
+    
     override func workspacePositionOf(_ connection: Connection) -> CGPoint {
         if _positionOfConnections.count == 0 {
             self.layoutSubviews()
@@ -114,6 +136,21 @@ class DefaultBlockView: BlockView {
         let blockPosition = _positionOfConnections[connection]!
         let workspacePosition = CGPoint(x: blockPosition.x + self.frame.origin.x, y: blockPosition.y + self.frame.origin.y)
         return workspacePosition
+    }
+    
+    // MARK: - Hit test
+    override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
+        let hitTestView = super.hitTest(point, with: event)
+        
+        if hitTestView == self {
+            if let bezierPath = bezierPath, bezierPath.contains(point) {
+                return self
+            } else {
+                return nil
+            }
+        }
+        
+        return hitTestView
     }
 }
 

@@ -19,5 +19,8 @@ class LayoutConfig: NSObject {
     
     let minBlockWidth: CGFloat = 60
     
+    let minBlockInputSize: CGSize = CGSize(width: 100, height: 60)
+    let minStatementIndent: CGFloat = 30
+    
     let connectingDistance: CGFloat = 45
 }

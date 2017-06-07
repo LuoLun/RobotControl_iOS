@@ -34,9 +34,11 @@ class BlocklyViewController: UIViewController {
         
         let block2 = blockBuilder.buildBlock()
         let input2 = FieldInput()
-        let field2 = FieldLabel(text: "demo2")
         block2.inputs.append(input2)
+        let field2 = FieldLabel(text: "demo2")
         input2.appendField(field2)
+        let input3 = BlockInput()
+        block2.inputs.append(input3)
         
         workspace.addBlock(block1)
         workspace.addBlock(block2)
@@ -45,11 +47,13 @@ class BlocklyViewController: UIViewController {
                 
         
          do {
-            try workspace.connectionManager.connect(block1.nextConnection!, anotherConnection: block2.previousConnection!)
+            try workspace.connectionManager.connect(input3.connection, anotherConnection: block1.previousConnection!)
          }
          catch {
             fatalError()
          }
+        assert(input3.connection.targetBlock == block1)
+        assert(block1.previousConnection?.targetBlock == block2)
  
     }
     

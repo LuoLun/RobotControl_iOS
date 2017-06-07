@@ -39,24 +39,21 @@ class ConnectionManager: NSObject {
         
         switch aConnection.category {
         case .previous:
-            if let targetBlock = aConnection.targetBlock {
-                targetBlock.nextConnection?.targetBlock = nil
-            }
             
-            aConnection.targetBlock = anotherConnection.sourceBlock
-            anotherConnection.targetBlock = aConnection.sourceBlock
+            disconnect(anotherConnection)
             
+            aConnection.targetConnection = anotherConnection
+            anotherConnection.targetConnection = aConnection
+            
+            // 先把后面的Block与前面的Block连接在一起
             delegate!.move(blockGroup: aConnection.sourceBlock!.blockGroup!, withOffsetFrom: aConnection, to: anotherConnection)
             
-            
+            // 然后在前面的block的group添加后面的block，并为后面的block重新指向前面block的group
             aConnection.sourceBlock!.blockGroup!.blocks.forEach { anotherConnection.sourceBlock!.blockGroup!.addBlock($0)
             }
             aConnection.sourceBlock!.blockGroup!.blocks.forEach {
                 $0.blockGroup = anotherConnection.sourceBlock!.blockGroup!
             }
-            
-            aConnection.targetConnection = anotherConnection
-            anotherConnection.targetConnection = aConnection
             
         case .next:
             try connect(anotherConnection, anotherConnection: aConnection)
@@ -101,10 +98,8 @@ class ConnectionManager: NSObject {
                 anotherConnection.sourceBlock!.blockGroup!.removeBlock(block)
             }
             
-            connection.targetBlock = nil
             connection.targetConnection = nil
             
-            anotherConnection.targetBlock = nil
             anotherConnection.targetConnection = nil
             
             

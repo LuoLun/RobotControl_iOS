@@ -24,15 +24,16 @@ class Connection: NSObject {
     
     let category: Category
     weak var sourceBlock: Block?
-    weak var targetBlock: Block?
+    var targetBlock: Block? {
+        return targetConnection?.sourceBlock
+    }
     
     weak var targetConnection: Connection?
     
-    init(category: Category, sourceBlock: Block? = nil, targetBlock: Block? = nil) {
+    init(category: Category, sourceBlock: Block? = nil) {
         self.category = category
         super.init()
         self.sourceBlock = sourceBlock
-        self.targetBlock = targetBlock
     }
     
     func matchWith(_ connection: Connection) -> Bool {

@@ -32,7 +32,15 @@ class Block: NSObject {
     
     var blockGroup: BlockGroup?
     
-    var inputs = [Input]()
+    var inputs = [Input]() {
+        didSet {
+            for input in inputs {
+                if let blockInput = input as? BlockInput {
+                    blockInput.connection.sourceBlock = self
+                }
+            }
+        }
+    }
     
     init(uuid: String?, previousConnection: Connection? = nil, nextConnection: Connection? = nil) {
         self.uuid = uuid ?? UUID().uuidString
@@ -54,8 +62,28 @@ class Block: NSObject {
     }
     
     // MARK: Field
+
+    // MARK: - Debug description
     
-    func appendInput(_ input: Input) {
-        inputs.append(input)
+    func debugDescription(indent: Int) -> String {
+        var debugString = ""
+        
+        let indentString = String(repeating: "\t", count: indent)
+        debugString += indentString + debugDescription
+        for conn in directConnections {
+            switch conn.category {
+            case .previous:
+                continue
+            case .next:
+                if let targetBlock = conn.targetBlock {
+                    debugString += targetBlock.debugDescription(indent: indent)
+                }
+            case .child:
+                if let targetBlock = conn.targetBlock {
+                    debugString += targetBlock.debugDescription(indent: indent + 1)
+                }
+            }
+        }
+        return debugString
     }
 }

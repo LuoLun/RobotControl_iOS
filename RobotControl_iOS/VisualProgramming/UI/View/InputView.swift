@@ -19,6 +19,12 @@ class InputView: LayoutView {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
+        // 如果点击在InputView自身，则不把自身当作View处理。因为我们只想处理Field和Block的事件
+        let hitTestView = super.hitTest(point, with: event)
+        return (hitTestView == self) ? nil : hitTestView
+    }
 }
 
 class FieldInputView: InputView {
@@ -61,6 +67,13 @@ class BlockInputView: InputView {
         var size = CGSize.zero
         var x: CGFloat = 0
         var y: CGFloat = 0
+        
+        statementIndent = layoutConfig.minStatementIndent
+        
+        if subviews.count == 0 {
+            self.frame.size = layoutConfig.minBlockInputSize
+            return
+        }
         
         var i = 0
         while subviews[i] is FieldView {
