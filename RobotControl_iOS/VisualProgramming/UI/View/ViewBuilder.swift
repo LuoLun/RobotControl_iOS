@@ -26,10 +26,13 @@ class ViewBuilder: NSObject {
         for input in block.inputs {
             let inputView = buildInputView(input)
             blockView.addSubview(inputView)
+            
+            inputView.sourceBlockView = blockView
         }
         
         blockView.block.directConnections.forEach{ $0.delegate = blockView }
         
+        blockView.workspaceView = workspaceView
         return blockView
     }
     
@@ -46,7 +49,6 @@ class ViewBuilder: NSObject {
             fatalError()
         }
         
-        view!.workspaceView = workspaceView
         return view!
     }
     
@@ -56,6 +58,8 @@ class ViewBuilder: NSObject {
         for field in input.fields {
             let fieldView = buildFieldView(field)
             fieldInputView.addSubview(fieldView)
+            
+            fieldView.sourceInputView = fieldInputView
         }
         
         return fieldInputView
@@ -67,12 +71,14 @@ class ViewBuilder: NSObject {
         for field in input.fields {
             let fieldView = buildFieldView(field)
             blockInputView.addSubview(fieldView)
+            
+            fieldView.sourceInputView = blockInputView
         }
         
-        for block in input.blocks {
-            let blockView = buildBlockView(block)
-            blockInputView.addSubview(blockView)
-        }
+//        for block in input.blocks {
+//            let blockView = buildBlockView(block)
+//            blockInputView.addSubview(blockView)
+//        }
         
         return blockInputView
     }
@@ -82,6 +88,11 @@ class ViewBuilder: NSObject {
             let fieldLabelView = FieldLabelView(layoutConfig: layoutConfig)
             fieldLabelView.field = field
             return fieldLabelView
+        }
+        if field is FieldVariable {
+            let fieldVariableView = FieldVariableView(layoutConfig: layoutConfig)
+            fieldVariableView.field = field
+            return fieldVariableView
         }
         return FieldView(layoutConfig: layoutConfig)
     }

@@ -42,6 +42,10 @@
 		6F6FB3441EE6FEB9007545A8 /* Workspace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F16627D1EE5BB3900F221E0 /* Workspace.swift */; };
 		6F6FB3451EE6FEBD007545A8 /* LayoutConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F16629B1EE6483600F221E0 /* LayoutConfig.swift */; };
 		6F6FB3461EE6FEBF007545A8 /* BlockBezierPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F1662CB1EE64F1A00F221E0 /* BlockBezierPath.swift */; };
+		6F6FB3481EE7BFF1007545A8 /* VariableManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6FB3471EE7BFF1007545A8 /* VariableManager.swift */; };
+		6F6FB34A1EE7C155007545A8 /* FieldVariable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6FB3491EE7C155007545A8 /* FieldVariable.swift */; };
+		6F6FB34C1EE7C168007545A8 /* FieldVariableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6FB34B1EE7C168007545A8 /* FieldVariableView.swift */; };
+		6F6FB34E1EE7CB4C007545A8 /* Variable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6FB34D1EE7CB4C007545A8 /* Variable.swift */; };
 		6F74DAB31EDEED9B003A6B23 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F74DAB21EDEED9B003A6B23 /* AppDelegate.swift */; };
 		6F74DABD1EDEED9B003A6B23 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6F74DABC1EDEED9B003A6B23 /* Assets.xcassets */; };
 		6F74DAC01EDEED9B003A6B23 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6F74DABE1EDEED9B003A6B23 /* LaunchScreen.storyboard */; };
@@ -98,6 +102,10 @@
 		6F1E91331EE59ED100E972E9 /* ConnectionManagerTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConnectionManagerTest.swift; path = VisualProgramming/ConnectionManagerTest.swift; sourceTree = "<group>"; };
 		6F1E91371EE59F0A00E972E9 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		6F6FB33A1EE6B066007545A8 /* ViewManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewManager.swift; sourceTree = "<group>"; };
+		6F6FB3471EE7BFF1007545A8 /* VariableManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VariableManager.swift; sourceTree = "<group>"; };
+		6F6FB3491EE7C155007545A8 /* FieldVariable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FieldVariable.swift; sourceTree = "<group>"; };
+		6F6FB34B1EE7C168007545A8 /* FieldVariableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FieldVariableView.swift; sourceTree = "<group>"; };
+		6F6FB34D1EE7CB4C007545A8 /* Variable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Variable.swift; sourceTree = "<group>"; };
 		6F74DAAF1EDEED9B003A6B23 /* RobotControl_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RobotControl_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F74DAB21EDEED9B003A6B23 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6F74DABC1EDEED9B003A6B23 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -141,6 +149,9 @@
 				6F16627C1EE5BB3900F221E0 /* FieldLabel.swift */,
 				6F16627D1EE5BB3900F221E0 /* Workspace.swift */,
 				6F16628D1EE5C36F00F221E0 /* Input.swift */,
+				6F6FB3471EE7BFF1007545A8 /* VariableManager.swift */,
+				6F6FB3491EE7C155007545A8 /* FieldVariable.swift */,
+				6F6FB34D1EE7CB4C007545A8 /* Variable.swift */,
 			);
 			name = Model;
 			path = VisualProgramming/Model;
@@ -178,6 +189,7 @@
 				6F1662BF1EE64F0400F221E0 /* LayoutView.swift */,
 				6F1662C01EE64F0400F221E0 /* ViewBuilder.swift */,
 				6F1662C11EE64F0400F221E0 /* WorkspaceView.swift */,
+				6F6FB34B1EE7C168007545A8 /* FieldVariableView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -389,7 +401,9 @@
 				6F1662CC1EE64F1A00F221E0 /* BlockBezierPath.swift in Sources */,
 				6F74DAB31EDEED9B003A6B23 /* AppDelegate.swift in Sources */,
 				6F1662C81EE64F0400F221E0 /* LayoutView.swift in Sources */,
+				6F6FB3481EE7BFF1007545A8 /* VariableManager.swift in Sources */,
 				6F1662881EE5BB3900F221E0 /* FieldLabel.swift in Sources */,
+				6F6FB34C1EE7C168007545A8 /* FieldVariableView.swift in Sources */,
 				6F16628E1EE5C36F00F221E0 /* Input.swift in Sources */,
 				6F1662C51EE64F0400F221E0 /* FieldLabelView.swift in Sources */,
 				6F1662C91EE64F0400F221E0 /* ViewBuilder.swift in Sources */,
@@ -399,6 +413,8 @@
 				6F1662C61EE64F0400F221E0 /* FieldView.swift in Sources */,
 				6F1662C41EE64F0400F221E0 /* DefaultBlockView.swift in Sources */,
 				6F1662821EE5BB3900F221E0 /* Block.swift in Sources */,
+				6F6FB34E1EE7CB4C007545A8 /* Variable.swift in Sources */,
+				6F6FB34A1EE7C155007545A8 /* FieldVariable.swift in Sources */,
 				6F1662831EE5BB3900F221E0 /* BlockBuilder.swift in Sources */,
 				6F1662891EE5BB3900F221E0 /* Workspace.swift in Sources */,
 				6F1662C71EE64F0400F221E0 /* InputView.swift in Sources */,

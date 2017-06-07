@@ -10,12 +10,16 @@ import UIKit
 
 class BlockBuilder: NSObject {
     
+    let name: String
     let hasPreviousConnection: Bool
     let hasNextConnection: Bool
     
-    init(hasPreviousConnection: Bool, hasNextConnection: Bool) {
+    var workspace: Workspace?
+    
+    init(name: String, hasPreviousConnection: Bool, hasNextConnection: Bool) {
         self.hasPreviousConnection = hasPreviousConnection
         self.hasNextConnection = hasNextConnection
+        self.name = name
         super.init()
     }
     
@@ -23,12 +27,14 @@ class BlockBuilder: NSObject {
         let previousConnection = hasPreviousConnection ? Connection(category: .previous) : nil
         let nextConnection = hasNextConnection ? Connection(category: .next) : nil
         
-        let block = Block(uuid: nil, previousConnection: previousConnection, nextConnection: nextConnection)
+        let block = Block(name: name, uuid: nil, previousConnection: previousConnection, nextConnection: nextConnection)
         previousConnection?.sourceBlock = block
         nextConnection?.sourceBlock = block
         
         block.blockGroup = BlockGroup(rootBlock: block)
         block.blockGroup?.addBlock(block)
+        
+        block.workspace = workspace
         
         return block
     }

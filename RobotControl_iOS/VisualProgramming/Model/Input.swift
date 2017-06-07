@@ -9,13 +9,22 @@
 import UIKit
 
 class Input: NSObject {
-    var fields = [Field]()
+    var _fields = [Field]()
+    
+    var fields: [Field] {
+        return _fields
+    }
+    
+    weak var sourceBlock: Block?
+    
+    func appendField(_ field: Field) {
+        _fields.append(field)
+        field.sourceInput = self
+        field.sourceBlock = sourceBlock
+    }
 }
 
 class FieldInput: Input {
-    func appendField(_ field: Field) {
-        fields.append(field)
-    }
 }
 
 class BlockInput: Input {

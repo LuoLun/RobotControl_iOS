@@ -10,7 +10,12 @@ import UIKit
 
 class InputView: LayoutView {
     let input: Input
-    weak var workspaceView: WorkspaceView?
+    
+    var sourceBlockView: BlockView?
+    
+    var workspaceView: WorkspaceView? {
+        return sourceBlockView!.workspaceView
+    }
     
     init(input: Input, layoutConfig: LayoutConfig) {
         self.input = input

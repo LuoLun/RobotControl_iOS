@@ -10,9 +10,14 @@ import UIKit
 
 class Block: NSObject {
     
+    let name: String
     let uuid: String
     let previousConnection: Connection?
     let nextConnection: Connection?
+    
+    weak var workspace: Workspace?
+    
+    var _variableManager: VariableManager?
     
     var directConnections: [Connection] {
         var connections = [Connection]()
@@ -35,20 +40,25 @@ class Block: NSObject {
     var inputs = [Input]() {
         didSet {
             for input in inputs {
+                input.sourceBlock = self
                 if let blockInput = input as? BlockInput {
                     blockInput.connection.sourceBlock = self
+                    
+                    // 如果能够容纳子Block，则这个block需要有一个变量管理器
+                    _variableManager = variableManager()
+                    _variableManager!.delegate = self
                 }
             }
         }
     }
     
-    init(uuid: String?, previousConnection: Connection? = nil, nextConnection: Connection? = nil) {
+    init(name: String, uuid: String?, previousConnection: Connection? = nil, nextConnection: Connection? = nil) {
         self.uuid = uuid ?? UUID().uuidString
 
         self.previousConnection = previousConnection
         self.nextConnection = nextConnection
 //        workspacePosition = Workspace.Point(0, 0)
-        
+        self.name = name
         super.init()
     }
     
@@ -57,7 +67,7 @@ class Block: NSObject {
     }
     
     func copiedBlock() -> Block {
-        let blockBuilder = BlockBuilder(hasPreviousConnection: previousConnection != nil, hasNextConnection: nextConnection != nil)
+        let blockBuilder = BlockBuilder(name: name, hasPreviousConnection: previousConnection != nil, hasNextConnection: nextConnection != nil)
         return blockBuilder.buildBlock()
     }
     
@@ -85,5 +95,40 @@ class Block: NSObject {
             }
         }
         return debugString
+    }
+    
+    // MARK: - Variable
+    
+    func parentBlock() -> Block? {
+        var block: Block? = self
+        while block != nil {
+            if let targetCategory = block?.previousConnection?.targetConnection?.category,
+                let targetBlock = block?.previousConnection?.targetBlock, targetCategory == .child {
+                return targetBlock
+            }
+            
+            block = block?.previousConnection?.targetBlock
+        }
+        return nil
+    }
+    
+    func variableManager() -> VariableManager? {
+        return _variableManager ?? parentBlock()?.variableManager() ?? workspace!.variableManager
+    }
+    
+    func parentVariableManager() -> VariableManager? {
+        return parentBlock()?.variableManager()
+    }
+}
+
+extension Block: VariableManagerDelegate {
+    func namespace() -> String {
+        var block: Block? = self
+        var namespace = ""
+        while block != nil {
+            namespace = block!.name + "." + namespace
+            block = block?.parentBlock()
+        }
+        return namespace
     }
 }

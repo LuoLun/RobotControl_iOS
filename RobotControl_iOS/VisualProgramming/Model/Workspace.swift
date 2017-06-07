@@ -15,6 +15,8 @@ protocol WorkspaceListener {
 
 class Workspace: NSObject {
     
+    let variableManager: VariableManager
+    
     var listener: WorkspaceListener?
     
     let connectionManager: ConnectionManager
@@ -40,6 +42,7 @@ class Workspace: NSObject {
     
     override init() {
         connectionManager = ConnectionManager()
+        variableManager = VariableManager()
         super.init()
     }
 }

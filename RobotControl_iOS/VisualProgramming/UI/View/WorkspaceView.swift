@@ -8,8 +8,14 @@
 
 import UIKit
 
+protocol WorkspaceViewDelegate: class {
+    func presentAlertController(_ alertController: UIAlertController)
+}
+
 class WorkspaceView: LayoutView, WorkspaceListener {
 
+    weak var delegate: WorkspaceViewDelegate?
+    
     let workspace: Workspace
     var connectionManager: ConnectionManager {
         return workspace.connectionManager
@@ -123,6 +129,12 @@ class WorkspaceView: LayoutView, WorkspaceListener {
         }
         
         self.layoutSubviews()
+    }
+    
+    // MAKR: - Alert
+    
+    func presentAlertController(_ alertController: UIAlertController) {
+        delegate!.presentAlertController(alertController)
     }
 }
 

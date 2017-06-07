@@ -19,6 +19,7 @@ class BlocklyViewController: UIViewController {
         
         let workspace = Workspace()
         let workspaceView = WorkspaceView(workspace: workspace, viewBuilder: ViewBuilder(layoutConfig: layoutConfig))
+        workspaceView.delegate = self
         workspaceView.viewBuilder.workspaceView = workspaceView
         
         workspace.listener = workspaceView
@@ -26,7 +27,8 @@ class BlocklyViewController: UIViewController {
         
         self.view.addSubview(workspaceView)
         
-        let blockBuilder = BlockBuilder(hasPreviousConnection: true, hasNextConnection: true)
+        let blockBuilder = BlockBuilder(name: "test", hasPreviousConnection: true, hasNextConnection: true)
+        blockBuilder.workspace = workspace
         
         let block1 = blockBuilder.buildBlock()
         let input1 = FieldInput()
@@ -47,6 +49,8 @@ class BlocklyViewController: UIViewController {
         block3.inputs.append(input4)
         let field4 = FieldLabel(text: "demo3")
         input4.appendField(field4)
+        let field5 = FieldVariable()
+        input4.appendField(field5)
         
         for i in 0..<10 {
             let block = blockBuilder.buildBlock()
@@ -81,4 +85,10 @@ class BlocklyViewController: UIViewController {
     }
     
 
+}
+
+extension BlocklyViewController: WorkspaceViewDelegate {
+    func presentAlertController(_ alertController: UIAlertController) {
+        self.present(alertController, animated: true, completion: nil)
+    }
 }

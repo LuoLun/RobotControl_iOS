@@ -11,6 +11,8 @@ import UIKit
 class BlockView: LayoutView {
 
     let block: Block
+    
+    weak var workspaceView: WorkspaceView?
 
     init(block: Block, layoutConfig: LayoutConfig) {
         self.block = block

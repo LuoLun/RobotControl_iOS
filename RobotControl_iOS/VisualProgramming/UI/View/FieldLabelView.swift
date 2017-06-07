@@ -11,9 +11,7 @@ import UIKit
 class FieldLabelView: FieldView {
 
     let label: UILabel
-    
-    let edgeInsets = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
-    
+        
     var fieldLabel: FieldLabel {
         return field as! FieldLabel
     }
@@ -37,9 +35,9 @@ class FieldLabelView: FieldView {
     override func layoutSubviews() {
         var size = CGSize.zero
         label.sizeToFit()
-        size.width += edgeInsets.left + label.frame.size.width + edgeInsets.right
-        size.height += edgeInsets.top + label.frame.size.height + edgeInsets.bottom
-        label.frame.origin = CGPoint(x: edgeInsets.left, y: edgeInsets.left)
+        size.width = contentEdgeInsets.left + label.frame.size.width + contentEdgeInsets.right
+        size.height = contentEdgeInsets.top + label.frame.size.height + contentEdgeInsets.bottom
+        label.frame.origin = CGPoint(x: contentEdgeInsets.left, y: contentEdgeInsets.left)
         self.frame.size = size
     }
 }

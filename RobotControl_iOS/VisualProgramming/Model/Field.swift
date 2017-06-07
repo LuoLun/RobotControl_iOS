@@ -9,5 +9,6 @@
 import UIKit
 
 class Field: NSObject {
-    
+    weak var sourceInput: Input?
+    weak var sourceBlock: Block?
 }
