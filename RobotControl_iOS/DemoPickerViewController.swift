@@ -25,7 +25,8 @@ class DemoPickerViewController: UIViewController {
         super.viewDidLoad()
         
         let tableView = UITableView(frame: self.view.frame, style: .plain)
-        self.view.autolayout_addSubview(tableView)
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(tableView)
         tableView.makeConstraintsEqualTo(self.view)
         
         tableView.delegate = self
@@ -77,6 +78,8 @@ extension DemoPickerViewController: UITableViewDataSource, UITableViewDelegate {
             viewController = BlocklyCompilerViewController()
         case 4:
             viewController = BlockSerializerViewController()
+        case 5:
+            viewController = RemoteControlViewController()
         default:
             viewController = UIViewController()
             break

@@ -13,20 +13,21 @@ class RobotManager: NSObject {
     
     typealias Robot = CBPeripheral
     
+    let uuid = UUID().uuidString
+    
     enum Mode: Int {
         case RunProgram = 0
         case RemoteControl = 1
     }
-    
-    public static let shared = RobotManager()
-    
+        
     var delegate: BluetoothManagerDelegate?
     let _bluetoothManager: BluetoothManager
     
-    private override init() {
+    override init() {
         _bluetoothManager = BluetoothManager.sharedInstance
-//        _bluetoothManager.add(delegate: self)
         super.init()
+        
+        _bluetoothManager.add(delegate: self)
     }
     
     func getRobot() {
@@ -43,15 +44,19 @@ class RobotManager: NSObject {
     }
     
     func send(commandString: String) -> Bool {
-        return _bluetoothManager.send(data: commandString.data(using: String.Encoding.ascii)!)
+        return _bluetoothManager.send(data: "{\"code\": \"\(commandString)\"}".data(using: String.Encoding.ascii)!)
     }
     
-    func setMode(mode: Mode) {
-//        _bluetoothManager.send(data: "setMode(\(mode.rawValue));")
+    func send(state: String) -> Bool {
+        return _bluetoothManager.send(data: "{\"state\": \(state)}".data(using: String.Encoding.ascii)!)
     }
     
-    func forceStopRunning() {
-        
+    func setMode(mode: Mode) -> Bool {
+        return _bluetoothManager.send(data: "{\"mode\": \(mode.rawValue)}".data(using: String.Encoding.utf8)!)
+    }
+    
+    func forceStopRunning() -> Bool {
+        return _bluetoothManager.send(data: "{\"forceStop\": 1}".data(using: String.Encoding.utf8)!)
     }
     
     func hasConnectedRobot() -> Bool {
@@ -59,6 +64,24 @@ class RobotManager: NSObject {
     }
 }
 
-//extension RobotManager: BluetoothManagerDelegate {
-//    
-//}
+extension RobotManager: BluetoothManagerDelegate {
+    func bluetoothManagerDidUpdateState(_ state: CBManagerState) {
+        delegate?.bluetoothManagerDidUpdateState(state)
+    }
+    
+    func bluetoothManagerdidUpdateDeviceList(_ deviceList: Set<CBPeripheral>) {
+        delegate?.bluetoothManagerdidUpdateDeviceList(deviceList)
+    }
+    
+    func bluetoothManagerFinishConnection(to device: CBPeripheral, success: Bool, error: Error?) {
+        delegate?.bluetoothManagerFinishConnection(to: device, success: success, error: error)
+    }
+    
+    func bluetoothManagerDidDisconnection(to device: CBPeripheral, error: Error?) {
+        delegate?.bluetoothManagerDidDisconnection(to: device, error: error)
+    }
+    
+    func peripheral(_ peripheral: CBPeripheral, didWriteValueFor characteristic: CBCharacteristic, error: Error?) {
+        delegate?.peripheral(peripheral, didWriteValueFor: characteristic, error: error)
+    }
+}

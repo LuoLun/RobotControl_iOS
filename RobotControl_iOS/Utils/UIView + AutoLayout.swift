@@ -61,7 +61,7 @@ public extension UIView {
     
     public func makeConstraintsEqualTo(_ view: UIView, edgeInsets: UIEdgeInsets, options: AlignOption) {
         if options.intersectsWith(.Top) {
-            NSLayoutConstraint(item: self, attribute: .top, relatedBy: .equal, toItem: view, attribute: .top, multiplier: 1.0, constant: edgeInsets.left).isActive = true
+            NSLayoutConstraint(item: self, attribute: .top, relatedBy: .equal, toItem: view, attribute: .top, multiplier: 1.0, constant: edgeInsets.top).isActive = true
 
         }
         if options.intersectsWith(.Left) {
@@ -69,11 +69,11 @@ public extension UIView {
             
         }
         if options.intersectsWith(.Right) {
-            NSLayoutConstraint(item: self, attribute: .right, relatedBy: .equal, toItem: view, attribute: .right, multiplier: 1.0, constant: edgeInsets.left).isActive = true
+            NSLayoutConstraint(item: self, attribute: .right, relatedBy: .equal, toItem: view, attribute: .right, multiplier: 1.0, constant: -edgeInsets.right).isActive = true
             
         }
         if options.intersectsWith(.Bottom) {
-            NSLayoutConstraint(item: self, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1.0, constant: edgeInsets.left).isActive = true
+            NSLayoutConstraint(item: self, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1.0, constant: -edgeInsets.bottom).isActive = true
             
         }
     }

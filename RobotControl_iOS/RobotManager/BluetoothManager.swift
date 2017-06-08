@@ -14,11 +14,14 @@ protocol BluetoothManagerDelegate: class {
     func bluetoothManagerdidUpdateDeviceList(_ deviceList: Set<CBPeripheral>)
     func bluetoothManagerFinishConnection(to device: CBPeripheral, success: Bool, error: Error?)
     func bluetoothManagerDidDisconnection(to device: CBPeripheral, error: Error?)
+    func peripheral(_ peripheral: CBPeripheral, didWriteValueFor characteristic: CBCharacteristic, error: Error?)
+    
+    var uuid: String {get}
 }
 
 class BluetoothManager: NSObject {
     
-    var _delegates = [BluetoothManagerDelegate]()
+    var _delegates = Array<BluetoothManagerDelegate>()
     
     let _centralManager: CBCentralManager
     
@@ -69,8 +72,8 @@ class BluetoothManager: NSObject {
     }
     
     func remove(delegate: BluetoothManagerDelegate) {
-        let index = _delegates.index(where: { $0 == delegate })
-        _delegates.remove(delegate)
+        let index = _delegates.index(where: { $0.uuid == delegate.uuid })!
+        _delegates.remove(at: index)
     }
     
 }
@@ -78,30 +81,30 @@ class BluetoothManager: NSObject {
 extension BluetoothManager: CBCentralManagerDelegate {
     
     func centralManagerDidUpdateState(_ central: CBCentralManager) {
-        _delegates?.forEach { $0.bluetoothManagerDidUpdateState(central.state) }
+        _delegates.forEach { $0.bluetoothManagerDidUpdateState(central.state) }
     }
     
     func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
         _devices.insert(peripheral)
-        _delegates?.forEach { $0.bluetoothManagerdidUpdateDeviceList(_devices) }
+        _delegates.forEach { $0.bluetoothManagerdidUpdateDeviceList(_devices) }
     }
     
     func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
         _connectedDevice = peripheral
         _connectedDevice?.delegate = self
-        _delegates?.forEach { $0.bluetoothManagerFinishConnection(to: peripheral, success: true, error: nil) }
+        _delegates.forEach { $0.bluetoothManagerFinishConnection(to: peripheral, success: true, error: nil) }
         
         discoverServicesForConnectedPeripheral()
     }
     
     func centralManager(_ central: CBCentralManager, didFailToConnect peripheral: CBPeripheral, error: Error?) {
-        _delegates?.forEach { $0.bluetoothManagerFinishConnection(to: peripheral, success: false, error: error) }
+        _delegates.forEach { $0.bluetoothManagerFinishConnection(to: peripheral, success: false, error: error) }
     }
     
     func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
         _connectedDevice?.delegate = nil
         _connectedDevice = nil
-        _delegates?.forEach { $0.bluetoothManagerDidDisconnection(to: peripheral, error: error) }
+        _delegates.forEach { $0.bluetoothManagerDidDisconnection(to: peripheral, error: error) }
     }
 }
 
@@ -123,10 +126,8 @@ extension BluetoothManager: CBPeripheralDelegate {
         }
     }
     
-    func peripheral(_ peripheral: CBPeripheral, didModifyServices invalidatedServices: [CBService]) {
-        if let error = error {
-            print(error)
-        }
+    func peripheral(_ peripheral: CBPeripheral, didWriteValueFor characteristic: CBCharacteristic, error: Error?) {
+        _delegates.forEach { $0.peripheral(peripheral, didWriteValueFor: characteristic, error: error) }
     }
     
 }

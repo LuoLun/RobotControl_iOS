@@ -69,6 +69,11 @@
 		6F74DACB1EDEED9B003A6B23 /* RobotControl_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F74DACA1EDEED9B003A6B23 /* RobotControl_iOSTests.swift */; };
 		6F74DAD61EDEEDE0003A6B23 /* DemoPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F74DAD51EDEEDE0003A6B23 /* DemoPickerViewController.swift */; };
 		6F8603E61EDEF72D00AA4507 /* UIView + AutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8603E51EDEF72D00AA4507 /* UIView + AutoLayout.swift */; };
+		6FC6E02B1EE9786700B4AFCC /* BluetoothManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FC6E0291EE9786700B4AFCC /* BluetoothManager.swift */; };
+		6FC6E02C1EE9786700B4AFCC /* RobotManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FC6E02A1EE9786700B4AFCC /* RobotManager.swift */; };
+		6FC6E0361EE97C4A00B4AFCC /* RemoteControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FC6E0351EE97C4A00B4AFCC /* RemoteControl.swift */; };
+		6FC6E0381EE97E0700B4AFCC /* RemoteControlViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FC6E0371EE97E0700B4AFCC /* RemoteControlViewController.swift */; };
+		6FC6E03A1EE97E3800B4AFCC /* RemoteControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FC6E0391EE97E3800B4AFCC /* RemoteControlView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -199,6 +204,11 @@
 		6F74DACC1EDEED9B003A6B23 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6F74DAD51EDEEDE0003A6B23 /* DemoPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoPickerViewController.swift; sourceTree = "<group>"; };
 		6F8603E51EDEF72D00AA4507 /* UIView + AutoLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView + AutoLayout.swift"; sourceTree = "<group>"; };
+		6FC6E0291EE9786700B4AFCC /* BluetoothManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BluetoothManager.swift; sourceTree = "<group>"; };
+		6FC6E02A1EE9786700B4AFCC /* RobotManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RobotManager.swift; sourceTree = "<group>"; };
+		6FC6E0351EE97C4A00B4AFCC /* RemoteControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteControl.swift; sourceTree = "<group>"; };
+		6FC6E0371EE97E0700B4AFCC /* RemoteControlViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteControlViewController.swift; sourceTree = "<group>"; };
+		6FC6E0391EE97E3800B4AFCC /* RemoteControlView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteControlView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -362,6 +372,8 @@
 		6F6FB38D1EE9160B007545A8 /* RobotManager */ = {
 			isa = PBXGroup;
 			children = (
+				6FC6E0291EE9786700B4AFCC /* BluetoothManager.swift */,
+				6FC6E02A1EE9786700B4AFCC /* RobotManager.swift */,
 			);
 			path = RobotManager;
 			sourceTree = "<group>";
@@ -400,6 +412,7 @@
 				6F6FB3961EE9378E007545A8 /* Common */,
 				6F8603E71EDEF73F00AA4507 /* BlocklyViewController */,
 				6F6FB38D1EE9160B007545A8 /* RobotManager */,
+				6FC6E0341EE97C4000B4AFCC /* RemoteControl */,
 				6F1E911A1EE54F4E00E972E9 /* VisualProgramming */,
 				6F74DAB21EDEED9B003A6B23 /* AppDelegate.swift */,
 				6F74DAD51EDEEDE0003A6B23 /* DemoPickerViewController.swift */,
@@ -443,6 +456,16 @@
 			);
 			name = BlocklyViewController;
 			path = BloclyViewController;
+			sourceTree = "<group>";
+		};
+		6FC6E0341EE97C4000B4AFCC /* RemoteControl */ = {
+			isa = PBXGroup;
+			children = (
+				6FC6E0351EE97C4A00B4AFCC /* RemoteControl.swift */,
+				6FC6E0371EE97E0700B4AFCC /* RemoteControlViewController.swift */,
+				6FC6E0391EE97E3800B4AFCC /* RemoteControlView.swift */,
+			);
+			path = RemoteControl;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -613,12 +636,15 @@
 				6F1662C31EE64F0400F221E0 /* BlockView.swift in Sources */,
 				6F6FB3891EE8E7C0007545A8 /* WorkspaceSerializer.swift in Sources */,
 				6F6FB3951EE9321B007545A8 /* UIAlertController+Convenience.swift in Sources */,
+				6FC6E0361EE97C4A00B4AFCC /* RemoteControl.swift in Sources */,
 				6F6FB35C1EE7ED8E007545A8 /* Toolbox.swift in Sources */,
 				6F6FB35A1EE7E615007545A8 /* BlockFactoryViewController.swift in Sources */,
 				6F1662871EE5BB3900F221E0 /* Field.swift in Sources */,
 				6F16629C1EE6483600F221E0 /* LayoutConfig.swift in Sources */,
+				6FC6E03A1EE97E3800B4AFCC /* RemoteControlView.swift in Sources */,
 				6F1662521EE5A3CA00F221E0 /* BlocklyViewController.swift in Sources */,
 				6F1662CC1EE64F1A00F221E0 /* BlockBezierPath.swift in Sources */,
+				6FC6E02C1EE9786700B4AFCC /* RobotManager.swift in Sources */,
 				6F74DAB31EDEED9B003A6B23 /* AppDelegate.swift in Sources */,
 				6F1662C81EE64F0400F221E0 /* LayoutView.swift in Sources */,
 				6F6FB3481EE7BFF1007545A8 /* VariableManager.swift in Sources */,
@@ -626,6 +652,7 @@
 				6F6FB34C1EE7C168007545A8 /* FieldVariableView.swift in Sources */,
 				6F16628E1EE5C36F00F221E0 /* Input.swift in Sources */,
 				6F1662C51EE64F0400F221E0 /* FieldLabelView.swift in Sources */,
+				6FC6E02B1EE9786700B4AFCC /* BluetoothManager.swift in Sources */,
 				6F1662C91EE64F0400F221E0 /* ViewBuilder.swift in Sources */,
 				6F6FB38B1EE8EF13007545A8 /* BlockSerializerViewController.swift in Sources */,
 				6F6FB3981EE9378E007545A8 /* ProjectManager.swift in Sources */,
@@ -641,6 +668,7 @@
 				6F1662C61EE64F0400F221E0 /* FieldView.swift in Sources */,
 				6F1662C41EE64F0400F221E0 /* DefaultBlockView.swift in Sources */,
 				6F1662821EE5BB3900F221E0 /* Block.swift in Sources */,
+				6FC6E0381EE97E0700B4AFCC /* RemoteControlViewController.swift in Sources */,
 				6F6FB3681EE859B0007545A8 /* BlocklyCompilerViewController.swift in Sources */,
 				6F6FB34E1EE7CB4C007545A8 /* Variable.swift in Sources */,
 				6F6FB34A1EE7C155007545A8 /* FieldVariable.swift in Sources */,
