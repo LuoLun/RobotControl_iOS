@@ -94,6 +94,16 @@ class Block: NSObject {
     
     // MARK: Field
 
+    func allFields() -> [Field] {
+        var fields = [Field]()
+        for input in inputs {
+            for field in input.fields {
+                fields.append(field)
+            }
+        }
+        return fields
+    }
+    
     func firstFieldWith(name: String) -> Field? {
         for input in inputs {
             for field in input.fields {
@@ -114,6 +124,17 @@ class Block: NSObject {
             }
         }
         return nil
+    }
+    
+    func allBlockInputs() -> [BlockInput] {
+        // 效率比较低的方法，但是这个方法使用频率不高
+        var blockInputs = [BlockInput]()
+        for input in inputs {
+            if let blockInput = input as? BlockInput {
+                blockInputs.append(blockInput)
+            }
+        }
+        return blockInputs
     }
     
     // MARK: - Debug description
@@ -195,13 +216,14 @@ class Block: NSObject {
 
 extension Block: VariableManagerDelegate {
     func namespace() -> String {
-        var block: Block? = self.parentBlock()
-        var namespace = ""
+        var block: Block? = self
+        var namespaces = [String]()
         while block != nil {
-            namespace = namespace + "." + block!.name + String(block!.orderInSameLevel())
+            namespaces.append(block!.name + String(block!.orderInSameLevel()))
             block = block?.parentBlock()
         }
-        namespace = Block.GlobalNameSpace + "." + namespace
+        namespaces.append(Block.GlobalNameSpace)
+        let namespace = namespaces.reversed().joined(separator: ".")
         return namespace
     }
 }

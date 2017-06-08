@@ -47,9 +47,20 @@ class Compiler: NSObject {
         }
     }
     
-    func compile(_ rootBlock: Block) throws -> String {
+    func compile(workspace: Workspace) throws -> String {
+        let rootBlocks = workspace.rootBlocks()
         
-        var block = rootBlock
+        var codeString = ""
+        for rootBlock in rootBlocks {
+            codeString += try compile(block: rootBlock)
+        }
+        
+        return codeString
+    }
+    
+    func compile(block: Block) throws -> String {
+        
+        var block = block
         var codeString = ""
         
         while true {
@@ -58,8 +69,6 @@ class Compiler: NSObject {
             
             do {
                 codeString += try statementGenerator!.generateCode(with: block)
-            } catch {
-                fatalError()
             }
             
             if let nextBlock = block.nextConnection?.targetBlock {
@@ -123,7 +132,12 @@ class FieldCodeGenerator: CodeGenerator {
     
     override func generateCode(with block: Block) throws -> String {
         let field = block.firstFieldWith(name: fieldName)
-        return try field!.codeValue()
+        
+        guard let codeValue = try field!.codeValue() else {
+            throw CompileDefError.wrongFieldTypeError(field: field!)
+        }
+        
+        return codeValue
     }
 }
 
@@ -140,7 +154,11 @@ class BlockInputCodeGenerator: CodeGenerator {
             throw CompileTimeError.error("Cannot find block input name `\(inputName)`")
         }
         
-        return try compiler!.compile(blockInput.connection.targetBlock!)
+        guard let targetBlock = blockInput.connection.targetBlock else {
+            throw CompileTimeError.error("There is empty child-connection, please connect it before compiling.")
+        }
+        
+        return try compiler!.compile(block: targetBlock)
     }
 }
 
@@ -149,6 +167,10 @@ class CompileDefError: NSError {
     
     public static let FormatError = CompileDefError("Code generator definition format error.", code: 1)
     public static let ContentWrongError = CompileDefError("Generator must be one of `text`, `field`, `block_input`.", code: 2)
+    
+    class func wrongFieldTypeError(field: Field) -> CompileDefError  {
+        return CompileDefError("Field type \(type(of: field)) cannot be used for generate code.", code: 3)
+    }
     
     init(_ description: String, code: Int) {
         super.init(domain: Domain, code: code, userInfo: [NSLocalizedDescriptionKey: description])
@@ -167,9 +189,26 @@ class CompileTimeError: RobotControlError {
     }
 }
 
+class CompileError: NSError {
+    
+    public static let VariableNotSelected = CompileError("Variable field has not been selectd.", code: 1)
+    
+    init(_ description: String, code: Int) {
+        super.init(domain: "CompileError", code: code, userInfo: [NSLocalizedDescriptionKey: description])
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}
+
 class RobotControlError: NSError {
     init(_ description: String, code: Int , domain: String) {
         super.init(domain: domain, code: code, userInfo: [NSLocalizedDescriptionKey: description])
+    }
+    
+    init(_ description: String, code: Int) {
+        super.init(domain: String(describing: type(of: self)), code: code, userInfo: [NSLocalizedDescriptionKey: description])
     }
     
     required init?(coder aDecoder: NSCoder) {

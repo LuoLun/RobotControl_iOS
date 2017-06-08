@@ -25,9 +25,20 @@ class Field: NSObject {
         fatalError()
     }
     
-    // MARK: - Compile
+    // MARK:  Compile
     
-    func codeValue() throws -> String {
+    func codeValue() throws -> String? {
+        // Subclass should override this method to copy a field.
+        // 返回这个Field所表示的代码
+        // 如果这个Field不表示代码，则返回nil
+        fatalError()
+    }
+    
+    func serialize() throws -> String? {
+        return nil
+    }
+    
+    func deserialize(text: String) throws {
         fatalError()
     }
 }

@@ -17,6 +17,7 @@ class BlocklyCompilerViewController: UIViewController {
     var _compiler: Compiler?
     
     var _toolboxButton: UIButton?
+    var _compileButton: UIButton?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -115,6 +116,7 @@ class BlocklyCompilerViewController: UIViewController {
     
     func initCompilerButton() {
         let button = UIButton(type: .roundedRect)
+        _compileButton = button
         button.setTitle("编译", for: .normal)
         
         button.addTarget(self, action: #selector(compile), for: .touchUpInside)
@@ -128,17 +130,19 @@ class BlocklyCompilerViewController: UIViewController {
     
     func compile() {
         guard let values = _workspace?._blocks.values,
-            let block = Array(values)[0].blockGroup?.rootBlock else {
+            let _ = Array(values)[0].blockGroup?.rootBlock else {
             print("工作空间中还没有语句方块，暂时不能编译")
                 return
         }
         
         do {
-            let code = try _compiler?.compile(block)
+            let code = try _compiler?.compile(workspace: _workspace!)
             print(String(describing: code))
         }
-        catch {
-            fatalError()
+        catch let error {
+            let alertController = UIAlertController(title: "编译错误", message: error.localizedDescription, preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "确定", style: .default, handler: nil))
+            self.present(alertController, animated: true, completion: nil)
         }
     }
     

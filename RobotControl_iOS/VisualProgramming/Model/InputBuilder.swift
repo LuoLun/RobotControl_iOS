@@ -32,7 +32,9 @@ class InputBuilder: NSObject {
         case .FieldInput:
             input = FieldInput(name: inputName)
         case .BlockInput:
-            input = BlockInput(name: inputName)
+            let blockInput = BlockInput(name: inputName)
+            blockInput.connection.sourceInput = blockInput
+            input = blockInput
         }
         
         for field in fields! {

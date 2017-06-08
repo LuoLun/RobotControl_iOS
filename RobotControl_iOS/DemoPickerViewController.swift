@@ -15,6 +15,7 @@ class DemoPickerViewController: UIViewController {
         "可视化编程 Demo (加上语句块工厂)",
         "可视化编程 Demo (加上工具箱)",
         "可视化编程 Demo (加上编译器)",
+        "可视化编程 Demo (加上持久化)",
         "遥控器 Demo",
         "声控 Demo",
         "轨迹控制 Demo"
@@ -74,6 +75,8 @@ extension DemoPickerViewController: UITableViewDataSource, UITableViewDelegate {
             viewController = BlockToolboxViewController()
         case 3:
             viewController = BlocklyCompilerViewController()
+        case 4:
+            viewController = BlockSerializerViewController()
         default:
             viewController = UIViewController()
             break

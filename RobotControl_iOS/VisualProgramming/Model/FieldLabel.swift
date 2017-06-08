@@ -20,4 +20,8 @@ class FieldLabel: Field {
         let fieldLabel = FieldLabel(name: name, text: text)
         return fieldLabel
     }
+    
+    override func codeValue() throws -> String? {
+        return nil
+    }
 }

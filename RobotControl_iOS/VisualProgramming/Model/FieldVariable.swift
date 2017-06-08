@@ -15,13 +15,13 @@ class FieldVariable: Field {
     func variableManager() -> VariableManager {
         return sourceBlock!.variableManager()
     }
- 
+    
     override func copiedField() -> Field {
         let fieldVariable = FieldVariable(name: name)
         return fieldVariable
     }
     
-    override func codeValue() throws -> String {
+    override func codeValue() throws -> String? {
         guard let variable = _selectedVariable else {
             throw CompileError.VariableNotSelected
         }
@@ -30,17 +30,55 @@ class FieldVariable: Field {
         let fullVariable = namespace + "_" + variable.name
         return fullVariable
     }
-}
-
-class CompileError: NSError {
     
-    public static let VariableNotSelected = CompileError("Variable field has not been selectd.", code: 1)
-    
-    init(_ description: String, code: Int) {
-        super.init(domain: "CompileError", code: code, userInfo: [NSLocalizedDescriptionKey: description])
+    override func serialize() throws -> String {
+        guard let variable = _selectedVariable else {
+            throw CompileError.VariableNotSelected
+        }
+        
+        let namespace = variable.variableManager!.namespace()
+        
+        return "[\(namespace), \(variable.name)]"
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    override func deserialize(text: String) throws {
+        let components = text.trimmingCharacters(in: CharacterSet(charactersIn: "[]")).components(separatedBy: CharacterSet(charactersIn: ","))
+        let namespace = components[0]
+        let name = components[1]
+        
+        let allVariableManagers = variableManagers(for: sourceBlock!)
+        var matchedVariableManager: VariableManager?
+        for variableManager in allVariableManagers {
+            if namespace == variableManager.namespace() {
+                matchedVariableManager = variableManager
+                break
+            }
+        }
+        
+        guard let variableManager = matchedVariableManager else {
+            throw DeserializeError.namespaceNotFoundError(namespace: namespace)
+        }
+        
+        // !!!: (#3) 因为这里只是为已经添加的变量还原，所以所有未使用的变量在反序列化的时候会消失
+        variableManager.add(name)
+    }
+    
+    // MARK: - 
+    
+    var variableManagers: Set<VariableManager> {
+        return variableManagers(for: self.sourceBlock!)
+    }
+    
+    func variableManagers(for block: Block) -> Set<VariableManager> {
+        var managers = Set<VariableManager>()
+        var block: Block? = block
+        while block != nil {
+            if block!._variableManager != nil {
+                managers.insert(block!._variableManager!)
+            }
+            block = block?.parentBlock()
+        }
+        managers.insert(sourceBlock!.workspace!.variableManager)
+        return managers
     }
 }

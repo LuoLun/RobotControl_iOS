@@ -30,6 +30,7 @@ class Connection: NSObject {
     
     let category: Category
     weak var sourceBlock: Block?
+    weak var sourceInput: BlockInput?
     var targetBlock: Block? {
         return targetConnection?.sourceBlock
     }

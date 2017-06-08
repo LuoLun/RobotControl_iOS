@@ -46,6 +46,14 @@ class Workspace: NSObject {
         super.init()
         variableManager.delegate = self
     }
+    
+    func rootBlocks() -> Set<Block> {
+        var rootBlocks = Set<Block>()
+        for block in _blocks.values {
+            rootBlocks.insert(block.blockGroup!.rootBlock)
+        }
+        return rootBlocks
+    }
 }
 
 extension Workspace: VariableManagerDelegate {

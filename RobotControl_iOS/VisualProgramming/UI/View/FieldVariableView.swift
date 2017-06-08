@@ -25,7 +25,7 @@ class FieldVariableView: FieldView {
     }
     
     var variableManagers: Set<VariableManager> {
-        return variableManagers(for: self.sourceInputView!.sourceBlockView!.block)
+        return fieldVariable!.variableManagers
     }
     
     let _button: UIButton
@@ -127,22 +127,10 @@ class FieldVariableView: FieldView {
     
     // MAKR: - Variables
     
-    func variableManagers(for block: Block) -> Set<VariableManager> {
-        var managers = Set<VariableManager>()
-        var block: Block? = block
-        while block != nil {
-            if block!._variableManager != nil {
-                managers.insert(block!._variableManager!)
-            }
-            block = block?.parentBlock()
-        }
-        managers.insert(workspaceView!.workspace.variableManager)
-        return managers
-    }
-    
+        
     func variables(for block: Block) -> [VariableWithNs] {
         var variables = [VariableWithNs]()
-        for variableManager in self.variableManagers(for: block) {
+        for variableManager in self.fieldVariable!.variableManagers(for: block) {
             for variable in variableManager.variables {
                 variables.append((name:variable.name, namespace: variableManager.namespace()))
             }
