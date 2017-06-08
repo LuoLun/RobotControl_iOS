@@ -19,4 +19,9 @@ class Variable: NSObject {
         self.name = name
     }
 
+    func codeNameWithNamespace() -> String {
+        var codeName = variableManager!.namespace() + name
+        codeName = codeName.replacingOccurrences(of: ".", with: "_")
+        return codeName
+    }
 }

@@ -63,6 +63,14 @@ class Compiler: NSObject {
         var block = block
         var codeString = ""
         
+        // 如果block有自己的命名空间，则生成变量定义语句
+        // !!!: (#7)暂时所有的变量都用float来存放
+        if let variables = block._variableManager?.variables {
+            for variable in variables {
+                codeString += "float " + variable.codeNameWithNamespace() + " = 0;"
+            }
+        }
+        
         while true {
             let name = block.name
             let statementGenerator = _statementGenerators[name]
