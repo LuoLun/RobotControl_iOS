@@ -15,6 +15,8 @@ protocol WorkspaceViewDelegate: class {
 class WorkspaceView: LayoutView {
 
     weak var delegate: WorkspaceViewDelegate?
+
+    let scrollView: UIScrollView
     
     let workspace: Workspace
     var connectionManager: ConnectionManager {
@@ -30,10 +32,15 @@ class WorkspaceView: LayoutView {
     init(workspace: Workspace, viewBuilder: ViewBuilder) {
         self.workspace = workspace
         self.viewBuilder = viewBuilder
+        scrollView = UIScrollView()
         super.init(layoutConfig: viewBuilder.layoutConfig)
         
         connectionManager.delegate = self
         workspace.listener = self
+
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        self.addSubview(scrollView)
+        scrollView.makeConstraintsEqualTo(self, edgeInsets: .zero)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -43,6 +50,8 @@ class WorkspaceView: LayoutView {
     func addTrackingGesture(for blockView: BlockView) {
         let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(panGesture(_:)))
         blockView.addGestureRecognizer(panGestureRecognizer)
+        
+        scrollView.panGestureRecognizer.require(toFail: panGestureRecognizer)
     }
     
     func removeTrackingGesture(for blockView: BlockView?) {
@@ -92,6 +101,18 @@ class WorkspaceView: LayoutView {
                     let aBlockView = viewManager.findViewFor(aBlock)
                     aBlockView.frame.origin = CGPoint(x: panBlockGruopBeginPoints[aBlock]!.x + delta.x, y: panBlockGruopBeginPoints[aBlock]!.y + delta.y)
                 }
+                
+                if blockView.frame.maxX > scrollView.contentSize.width {
+                    scrollView.contentSize.width = blockView.frame.maxX + 40
+                }
+                if blockView.frame.maxY > scrollView.contentSize.height {
+                    scrollView.contentSize.height = blockView.frame.maxY + 40
+                }
+                
+                if scrollView.frame.contains(blockView.frame) == false {
+                    scrollView.scrollRectToVisible(blockView.frame, animated: true)
+                }
+                
             }
             else  if recognizer.state == .ended {
                 
@@ -128,7 +149,7 @@ class WorkspaceView: LayoutView {
 extension WorkspaceView: WorkspaceListener {
     func workspaceDidAddBlock(_ block: Block) {
         let blockView = viewBuilder.buildBlockView(block)
-        self.addSubview(blockView)
+        scrollView.addSubview(blockView)
         
         _blockViews[block.uuid] = blockView
         
@@ -162,3 +183,4 @@ extension WorkspaceView:  ConnectionManagerDelegate {
         }
     }
 }
+
