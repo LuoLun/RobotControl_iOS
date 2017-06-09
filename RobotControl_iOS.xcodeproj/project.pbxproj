@@ -30,6 +30,9 @@
 		6F1662CE1EE650EC00F221E0 /* PathHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F1662CD1EE650EC00F221E0 /* PathHelper.swift */; };
 		6F1E91341EE59ED100E972E9 /* ConnectionManagerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F1E91331EE59ED100E972E9 /* ConnectionManagerTest.swift */; };
 		6F1E91391EE59F2D00E972E9 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F1E91371EE59F0A00E972E9 /* XCTest.framework */; };
+		6F4797F31EEA483200FB9D53 /* AEXML.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F6FB37A1EE8E413007545A8 /* AEXML.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		6F4797F61EEA773100FB9D53 /* RoutePlanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F4797F51EEA773100FB9D53 /* RoutePlanView.swift */; };
+		6F4797F81EEA7A2100FB9D53 /* RoutePlanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F4797F71EEA7A2100FB9D53 /* RoutePlanViewController.swift */; };
 		6F6FB33B1EE6B066007545A8 /* ViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6FB33A1EE6B066007545A8 /* ViewManager.swift */; };
 		6F6FB33C1EE6FDD6007545A8 /* BlockBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F1662771EE5BB3900F221E0 /* BlockBuilder.swift */; };
 		6F6FB33D1EE6FDD9007545A8 /* ConnectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F16627A1EE5BB3900F221E0 /* ConnectionManager.swift */; };
@@ -68,12 +71,27 @@
 		6F74DAC01EDEED9B003A6B23 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6F74DABE1EDEED9B003A6B23 /* LaunchScreen.storyboard */; };
 		6F74DACB1EDEED9B003A6B23 /* RobotControl_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F74DACA1EDEED9B003A6B23 /* RobotControl_iOSTests.swift */; };
 		6F74DAD61EDEEDE0003A6B23 /* DemoPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F74DAD51EDEEDE0003A6B23 /* DemoPickerViewController.swift */; };
+		6F85472A1EEA2EBA008E6D3B /* VoiceControlViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8547291EEA2EBA008E6D3B /* VoiceControlViewController.swift */; };
+		6F8547331EEA3508008E6D3B /* VoiceCommandCompileDef.json in Resources */ = {isa = PBXBuildFile; fileRef = 6F8547321EEA3508008E6D3B /* VoiceCommandCompileDef.json */; };
+		6F8547351EEA41C6008E6D3B /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F8547341EEA41C6008E6D3B /* CoreTelephony.framework */; };
+		6F8547371EEA41DA008E6D3B /* Contacts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F8547361EEA41DA008E6D3B /* Contacts.framework */; };
+		6F8547391EEA41E2008E6D3B /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F8547381EEA41E2008E6D3B /* AddressBook.framework */; };
 		6F8603E61EDEF72D00AA4507 /* UIView + AutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8603E51EDEF72D00AA4507 /* UIView + AutoLayout.swift */; };
 		6FC6E02B1EE9786700B4AFCC /* BluetoothManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FC6E0291EE9786700B4AFCC /* BluetoothManager.swift */; };
 		6FC6E02C1EE9786700B4AFCC /* RobotManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FC6E02A1EE9786700B4AFCC /* RobotManager.swift */; };
 		6FC6E0361EE97C4A00B4AFCC /* RemoteControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FC6E0351EE97C4A00B4AFCC /* RemoteControl.swift */; };
 		6FC6E0381EE97E0700B4AFCC /* RemoteControlViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FC6E0371EE97E0700B4AFCC /* RemoteControlViewController.swift */; };
 		6FC6E03A1EE97E3800B4AFCC /* RemoteControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FC6E0391EE97E3800B4AFCC /* RemoteControlView.swift */; };
+		6FC6E0411EE9B25400B4AFCC /* VoiceControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FC6E0401EE9B25400B4AFCC /* VoiceControl.swift */; };
+		6FC6E0431EE9B31500B4AFCC /* VoiceRecognizerAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FC6E0421EE9B31500B4AFCC /* VoiceRecognizerAdapter.swift */; };
+		6FC6E0451EE9B42800B4AFCC /* iflyMSC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FC6E0441EE9B42800B4AFCC /* iflyMSC.framework */; };
+		6FC6E0471EE9B45500B4AFCC /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FC6E0461EE9B45500B4AFCC /* libz.tbd */; };
+		6FC6E0491EE9B45E00B4AFCC /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FC6E0481EE9B45E00B4AFCC /* AVFoundation.framework */; };
+		6FC6E04B1EE9B46800B4AFCC /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FC6E04A1EE9B46800B4AFCC /* SystemConfiguration.framework */; };
+		6FC6E04D1EE9B47600B4AFCC /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FC6E04C1EE9B47600B4AFCC /* AudioToolbox.framework */; };
+		6FC6E04F1EE9B48100B4AFCC /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FC6E04E1EE9B48100B4AFCC /* CoreLocation.framework */; };
+		6FC6E0501EE9B56400B4AFCC /* iflyMSC.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6FC6E0441EE9B42800B4AFCC /* iflyMSC.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		6FC6E0531EE9B79500B4AFCC /* VoiceCommandDef.abnf in Resources */ = {isa = PBXBuildFile; fileRef = 6FC6E0521EE9B79500B4AFCC /* VoiceCommandDef.abnf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -133,18 +151,26 @@
 			remoteGlobalIDString = 6F74DAAE1EDEED9B003A6B23;
 			remoteInfo = RobotControl_iOS;
 		};
+		6F85473A1EEA426A008E6D3B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6F6FB36F1EE8E413007545A8 /* AEXML.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 8B4A92781BDD47210011F36F;
+			remoteInfo = "AEXML iOS";
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		6F8603DD1EDEF44000AA4507 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 8;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				6FC6E0501EE9B56400B4AFCC /* iflyMSC.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
+			runOnlyForDeploymentPostprocessing = 1;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
@@ -172,6 +198,9 @@
 		6F1662CD1EE650EC00F221E0 /* PathHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PathHelper.swift; sourceTree = "<group>"; };
 		6F1E91331EE59ED100E972E9 /* ConnectionManagerTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConnectionManagerTest.swift; path = VisualProgramming/ConnectionManagerTest.swift; sourceTree = "<group>"; };
 		6F1E91371EE59F0A00E972E9 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		6F4797F51EEA773100FB9D53 /* RoutePlanView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutePlanView.swift; sourceTree = "<group>"; };
+		6F4797F71EEA7A2100FB9D53 /* RoutePlanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutePlanViewController.swift; sourceTree = "<group>"; wrapsLines = 0; };
+		6F4797F91EEA8A6000FB9D53 /* RobotControl_iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RobotControl_iOS.entitlements; sourceTree = "<group>"; };
 		6F6FB33A1EE6B066007545A8 /* ViewManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewManager.swift; sourceTree = "<group>"; };
 		6F6FB3471EE7BFF1007545A8 /* VariableManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VariableManager.swift; sourceTree = "<group>"; };
 		6F6FB3491EE7C155007545A8 /* FieldVariable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FieldVariable.swift; sourceTree = "<group>"; };
@@ -203,12 +232,27 @@
 		6F74DACA1EDEED9B003A6B23 /* RobotControl_iOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RobotControl_iOSTests.swift; sourceTree = "<group>"; };
 		6F74DACC1EDEED9B003A6B23 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6F74DAD51EDEEDE0003A6B23 /* DemoPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoPickerViewController.swift; sourceTree = "<group>"; };
+		6F8547291EEA2EBA008E6D3B /* VoiceControlViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VoiceControlViewController.swift; sourceTree = "<group>"; };
+		6F8547321EEA3508008E6D3B /* VoiceCommandCompileDef.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = VoiceCommandCompileDef.json; sourceTree = "<group>"; };
+		6F8547341EEA41C6008E6D3B /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		6F8547361EEA41DA008E6D3B /* Contacts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Contacts.framework; path = System/Library/Frameworks/Contacts.framework; sourceTree = SDKROOT; };
+		6F8547381EEA41E2008E6D3B /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		6F8603E51EDEF72D00AA4507 /* UIView + AutoLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView + AutoLayout.swift"; sourceTree = "<group>"; };
 		6FC6E0291EE9786700B4AFCC /* BluetoothManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BluetoothManager.swift; sourceTree = "<group>"; };
 		6FC6E02A1EE9786700B4AFCC /* RobotManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RobotManager.swift; sourceTree = "<group>"; };
 		6FC6E0351EE97C4A00B4AFCC /* RemoteControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteControl.swift; sourceTree = "<group>"; };
 		6FC6E0371EE97E0700B4AFCC /* RemoteControlViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteControlViewController.swift; sourceTree = "<group>"; };
 		6FC6E0391EE97E3800B4AFCC /* RemoteControlView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteControlView.swift; sourceTree = "<group>"; };
+		6FC6E0401EE9B25400B4AFCC /* VoiceControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VoiceControl.swift; sourceTree = "<group>"; };
+		6FC6E0421EE9B31500B4AFCC /* VoiceRecognizerAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VoiceRecognizerAdapter.swift; sourceTree = "<group>"; };
+		6FC6E0441EE9B42800B4AFCC /* iflyMSC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = iflyMSC.framework; sourceTree = "<group>"; };
+		6FC6E0461EE9B45500B4AFCC /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		6FC6E0481EE9B45E00B4AFCC /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		6FC6E04A1EE9B46800B4AFCC /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		6FC6E04C1EE9B47600B4AFCC /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		6FC6E04E1EE9B48100B4AFCC /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		6FC6E0511EE9B5D900B4AFCC /* RobotControl_iOS-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RobotControl_iOS-Bridging-Header.h"; sourceTree = "<group>"; };
+		6FC6E0521EE9B79500B4AFCC /* VoiceCommandDef.abnf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = VoiceCommandDef.abnf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -216,6 +260,16 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6F4797F31EEA483200FB9D53 /* AEXML.framework in Frameworks */,
+				6F8547391EEA41E2008E6D3B /* AddressBook.framework in Frameworks */,
+				6F8547371EEA41DA008E6D3B /* Contacts.framework in Frameworks */,
+				6F8547351EEA41C6008E6D3B /* CoreTelephony.framework in Frameworks */,
+				6FC6E04F1EE9B48100B4AFCC /* CoreLocation.framework in Frameworks */,
+				6FC6E04D1EE9B47600B4AFCC /* AudioToolbox.framework in Frameworks */,
+				6FC6E04B1EE9B46800B4AFCC /* SystemConfiguration.framework in Frameworks */,
+				6FC6E0491EE9B45E00B4AFCC /* AVFoundation.framework in Frameworks */,
+				6FC6E0471EE9B45500B4AFCC /* libz.tbd in Frameworks */,
+				6FC6E0451EE9B42800B4AFCC /* iflyMSC.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -325,9 +379,27 @@
 		6F1E91361EE59F0A00E972E9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6F8547381EEA41E2008E6D3B /* AddressBook.framework */,
+				6F8547361EEA41DA008E6D3B /* Contacts.framework */,
+				6F8547341EEA41C6008E6D3B /* CoreTelephony.framework */,
+				6FC6E04E1EE9B48100B4AFCC /* CoreLocation.framework */,
+				6FC6E04C1EE9B47600B4AFCC /* AudioToolbox.framework */,
+				6FC6E04A1EE9B46800B4AFCC /* SystemConfiguration.framework */,
+				6FC6E0481EE9B45E00B4AFCC /* AVFoundation.framework */,
+				6FC6E0461EE9B45500B4AFCC /* libz.tbd */,
+				6FC6E0441EE9B42800B4AFCC /* iflyMSC.framework */,
 				6F1E91371EE59F0A00E972E9 /* XCTest.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6F4797F41EEA772100FB9D53 /* RoutePlan */ = {
+			isa = PBXGroup;
+			children = (
+				6F4797F51EEA773100FB9D53 /* RoutePlanView.swift */,
+				6F4797F71EEA7A2100FB9D53 /* RoutePlanViewController.swift */,
+			);
+			path = RoutePlan;
 			sourceTree = "<group>";
 		};
 		6F6FB34F1EE7D89D007545A8 /* Resources */ = {
@@ -335,6 +407,8 @@
 			children = (
 				6F6FB3501EE7D8AE007545A8 /* BlockDef.json */,
 				6F6FB3611EE84A5C007545A8 /* BlockCompileDef.json */,
+				6FC6E0521EE9B79500B4AFCC /* VoiceCommandDef.abnf */,
+				6F8547321EEA3508008E6D3B /* VoiceCommandCompileDef.json */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -409,10 +483,13 @@
 		6F74DAB11EDEED9B003A6B23 /* RobotControl_iOS */ = {
 			isa = PBXGroup;
 			children = (
+				6F4797F91EEA8A6000FB9D53 /* RobotControl_iOS.entitlements */,
 				6F6FB3961EE9378E007545A8 /* Common */,
 				6F8603E71EDEF73F00AA4507 /* BlocklyViewController */,
 				6F6FB38D1EE9160B007545A8 /* RobotManager */,
 				6FC6E0341EE97C4000B4AFCC /* RemoteControl */,
+				6FC6E03F1EE9B24700B4AFCC /* VoiceControl */,
+				6F4797F41EEA772100FB9D53 /* RoutePlan */,
 				6F1E911A1EE54F4E00E972E9 /* VisualProgramming */,
 				6F74DAB21EDEED9B003A6B23 /* AppDelegate.swift */,
 				6F74DAD51EDEEDE0003A6B23 /* DemoPickerViewController.swift */,
@@ -421,6 +498,7 @@
 				6F6FB34F1EE7D89D007545A8 /* Resources */,
 				6F74DABE1EDEED9B003A6B23 /* LaunchScreen.storyboard */,
 				6F74DAC11EDEED9B003A6B23 /* Info.plist */,
+				6FC6E0511EE9B5D900B4AFCC /* RobotControl_iOS-Bridging-Header.h */,
 			);
 			path = RobotControl_iOS;
 			sourceTree = "<group>";
@@ -468,6 +546,16 @@
 			path = RemoteControl;
 			sourceTree = "<group>";
 		};
+		6FC6E03F1EE9B24700B4AFCC /* VoiceControl */ = {
+			isa = PBXGroup;
+			children = (
+				6FC6E0401EE9B25400B4AFCC /* VoiceControl.swift */,
+				6FC6E0421EE9B31500B4AFCC /* VoiceRecognizerAdapter.swift */,
+				6F8547291EEA2EBA008E6D3B /* VoiceControlViewController.swift */,
+			);
+			path = VoiceControl;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -483,6 +571,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				6F85473B1EEA426A008E6D3B /* PBXTargetDependency */,
 			);
 			name = RobotControl_iOS;
 			productName = RobotControl_iOS;
@@ -519,7 +608,13 @@
 				TargetAttributes = {
 					6F74DAAE1EDEED9B003A6B23 = {
 						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = 73VV5F7YHF;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.InterAppAudio = {
+								enabled = 1;
+							};
+						};
 					};
 					6F74DAC51EDEED9B003A6B23 = {
 						CreatedOnToolsVersion = 8.3.2;
@@ -610,10 +705,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6F8547331EEA3508008E6D3B /* VoiceCommandCompileDef.json in Resources */,
 				6F6FB3511EE7D8AE007545A8 /* BlockDef.json in Resources */,
 				6F74DAC01EDEED9B003A6B23 /* LaunchScreen.storyboard in Resources */,
 				6F74DABD1EDEED9B003A6B23 /* Assets.xcassets in Resources */,
 				6F6FB3621EE84A5C007545A8 /* BlockCompileDef.json in Resources */,
+				6FC6E0531EE9B79500B4AFCC /* VoiceCommandDef.abnf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -632,10 +729,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				6F1662CE1EE650EC00F221E0 /* PathHelper.swift in Sources */,
+				6FC6E0411EE9B25400B4AFCC /* VoiceControl.swift in Sources */,
 				6F1662CA1EE64F0400F221E0 /* WorkspaceView.swift in Sources */,
 				6F1662C31EE64F0400F221E0 /* BlockView.swift in Sources */,
 				6F6FB3891EE8E7C0007545A8 /* WorkspaceSerializer.swift in Sources */,
 				6F6FB3951EE9321B007545A8 /* UIAlertController+Convenience.swift in Sources */,
+				6F4797F81EEA7A2100FB9D53 /* RoutePlanViewController.swift in Sources */,
 				6FC6E0361EE97C4A00B4AFCC /* RemoteControl.swift in Sources */,
 				6F6FB35C1EE7ED8E007545A8 /* Toolbox.swift in Sources */,
 				6F6FB35A1EE7E615007545A8 /* BlockFactoryViewController.swift in Sources */,
@@ -645,9 +744,11 @@
 				6F1662521EE5A3CA00F221E0 /* BlocklyViewController.swift in Sources */,
 				6F1662CC1EE64F1A00F221E0 /* BlockBezierPath.swift in Sources */,
 				6FC6E02C1EE9786700B4AFCC /* RobotManager.swift in Sources */,
+				6F4797F61EEA773100FB9D53 /* RoutePlanView.swift in Sources */,
 				6F74DAB31EDEED9B003A6B23 /* AppDelegate.swift in Sources */,
 				6F1662C81EE64F0400F221E0 /* LayoutView.swift in Sources */,
 				6F6FB3481EE7BFF1007545A8 /* VariableManager.swift in Sources */,
+				6FC6E0431EE9B31500B4AFCC /* VoiceRecognizerAdapter.swift in Sources */,
 				6F1662881EE5BB3900F221E0 /* FieldLabel.swift in Sources */,
 				6F6FB34C1EE7C168007545A8 /* FieldVariableView.swift in Sources */,
 				6F16628E1EE5C36F00F221E0 /* Input.swift in Sources */,
@@ -668,6 +769,7 @@
 				6F1662C61EE64F0400F221E0 /* FieldView.swift in Sources */,
 				6F1662C41EE64F0400F221E0 /* DefaultBlockView.swift in Sources */,
 				6F1662821EE5BB3900F221E0 /* Block.swift in Sources */,
+				6F85472A1EEA2EBA008E6D3B /* VoiceControlViewController.swift in Sources */,
 				6FC6E0381EE97E0700B4AFCC /* RemoteControlViewController.swift in Sources */,
 				6F6FB3681EE859B0007545A8 /* BlocklyCompilerViewController.swift in Sources */,
 				6F6FB34E1EE7CB4C007545A8 /* Variable.swift in Sources */,
@@ -709,6 +811,11 @@
 			isa = PBXTargetDependency;
 			target = 6F74DAAE1EDEED9B003A6B23 /* RobotControl_iOS */;
 			targetProxy = 6F74DAC71EDEED9B003A6B23 /* PBXContainerItemProxy */;
+		};
+		6F85473B1EEA426A008E6D3B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "AEXML iOS";
+			targetProxy = 6F85473A1EEA426A008E6D3B /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -823,14 +930,19 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = RobotControl_iOS/RobotControl_iOS.entitlements;
+				DEVELOPMENT_TEAM = 73VV5F7YHF;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/RobotControl_iOS",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = RobotControl_iOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.aaron.RobotControl-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "RobotControl_iOS/RobotControl_iOS-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -839,14 +951,19 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = RobotControl_iOS/RobotControl_iOS.entitlements;
+				DEVELOPMENT_TEAM = 73VV5F7YHF;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/RobotControl_iOS",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = RobotControl_iOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.aaron.RobotControl-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "RobotControl_iOS/RobotControl_iOS-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

@@ -18,5 +18,13 @@
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+	<key>NSLocationUsageDescription</key>
+	<string>确定你的位置</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>在应用未开启时确定你的位置</string>
+	<key>NSContactsUsageDescription</key>
+	<string>访问你的联系人</string>
+    <key>NSMicrophoneUsageDescription</key>
+    <string>用语音控制机器人</string>
 </dict>
 </plist>

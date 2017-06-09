@@ -1,0 +1,24 @@
+ [
+  {
+  "text": [
+           ["string": "机器人前进"],
+           ["variable": "%1"]
+           ],
+  "code": [
+           ["string": "move("],
+           ["variable": "%1"],
+           ["string": ")"]
+           ]
+  },
+  {
+  "text": [
+           ["string": "机器人后退"],
+           ["variable": "%1"]
+           ],
+  "code": [
+           ["string": "move(-"],
+           ["variable": "%1"],
+           ["string": ")"]
+           ]
+  }
+  ]

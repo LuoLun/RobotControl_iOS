@@ -1,0 +1,14 @@
+#ABNF 1.0 UTF-8;
+language zh-CN;
+mode voice;
+
+root $main;
+$main = $moveCommand | 停止;
+
+$moveCommand = (前进|后退) $number 米;
+$number = [$digit][$ten][$digit][$wan][$digit][$thousand][$digit][$hundred][$digit][$ten][$digit];
+$ten = 十;
+$hundred = 百;
+$thousand = 千;
+$wan = 万;
+$digit = 零|一|二|三|四|五|六|七|八|九|两;

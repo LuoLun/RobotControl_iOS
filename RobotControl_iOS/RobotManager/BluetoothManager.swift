@@ -30,6 +30,10 @@ class BluetoothManager: NSObject {
     
     public static let sharedInstance = BluetoothManager()
     
+    var state: CBManagerState {
+        return _centralManager.state
+    }
+    
     override private init() {
         _centralManager = CBCentralManager()
         super.init()

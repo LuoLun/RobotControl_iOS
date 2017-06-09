@@ -41,6 +41,8 @@ class RemoteControlView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         
+        setNeedsDisplay()
+        
         let size = self.frame.size
         let height = size.height
         let width = size.width
@@ -56,7 +58,7 @@ class RemoteControlView: UIView {
         let originX = (width - padWidth) / 2, originY = (height - padHeight) / 2
         
         _leftJoystickRect = CGRect(x: originX, y: originY + padHeight / 8 * 3, width: padWidth / 2, height: padHeight / 4)
-        _rightJoystickRect = CGRect(x: originX + padWidth / 2 + padWidth / 2 / 8 * 3, y: 0, width: padWidth / 2 / 4, height: padHeight)
+        _rightJoystickRect = CGRect(x: originX + padWidth / 2 + padWidth / 2 / 8 * 3, y: originY, width: padWidth / 2 / 4, height: padHeight)
         
         let widthAndHeight = min(padWidth, padHeight) / 4
         _leftJoystick.frame.size = CGSize(width: widthAndHeight, height: widthAndHeight)
@@ -123,7 +125,7 @@ class RemoteControlView: UIView {
         context.fillPath()
         
         context.beginPath()
-        _rightJoystickRect = CGRect(x: originX + padWidth / 2 + padWidth / 2 / 8 * 3, y: 0, width: padWidth / 2 / 4, height: padHeight)
+        _rightJoystickRect = CGRect(x: originX + padWidth / 2 + padWidth / 2 / 8 * 3, y: originY, width: padWidth / 2 / 4, height: padHeight)
         context.addRect(_rightJoystickRect)
         context.fillPath()
         

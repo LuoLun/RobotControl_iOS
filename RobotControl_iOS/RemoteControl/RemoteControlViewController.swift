@@ -34,6 +34,8 @@ class RemoteControlViewController: UIViewController, RemoteControlViewDelegate {
         _sendStatusLabel!.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(_sendStatusLabel!)
         _sendStatusLabel!.makeConstraintsEqualTo(self.view, edgeInsets: UIEdgeInsets.zero, options: [.Top, .Right])
+        
+        self.view.layoutSubviews()
     }
 
     func move(angleRatio: CGFloat, speedRatio: CGFloat) {

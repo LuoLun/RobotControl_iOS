@@ -28,24 +28,24 @@ class RemoteControl: NSObject {
     
 }
 
-extension RemoteControl: BluetoothManagerDelegate {
+extension RemoteControl: RobotManagerDelegate {
     func bluetoothManagerDidUpdateState(_ state: CBManagerState) {
         delegate?.bluetoothManagerDidUpdateState(state)
     }
     
-    func bluetoothManagerdidUpdateDeviceList(_ deviceList: Set<CBPeripheral>) {
+    func robotManagerDidUpdateDeviceList(_ deviceList: Set<CBPeripheral>) {
         delegate?.bluetoothManagerdidUpdateDeviceList(deviceList)
     }
     
-    func bluetoothManagerFinishConnection(to device: CBPeripheral, success: Bool, error: Error?) {
-        delegate?.bluetoothManagerFinishConnection(to: device, success: success, error: error)
+    func robotManagerDidConnect(to robot: CBPeripheral, success: Bool, error: Error?) {
+        delegate?.bluetoothManagerFinishConnection(to: robot, success: success, error: error)
     }
     
-    func bluetoothManagerDidDisconnection(to device: CBPeripheral, error: Error?) {
+    func robotManagerDidDisconnection(to device: CBPeripheral, error: Error?) {
         delegate?.bluetoothManagerDidDisconnection(to: device, error: error)
     }
     
-    func peripheral(_ peripheral: CBPeripheral, didWriteValueFor characteristic: CBCharacteristic, error: Error?) {
+    func robot(_ peripheral: CBPeripheral, didWriteValueFor characteristic: CBCharacteristic, error: Error?) {
         delegate?.peripheral(peripheral, didWriteValueFor: characteristic, error: error)
     }
 }
