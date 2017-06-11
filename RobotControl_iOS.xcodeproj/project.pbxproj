@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6F1662521EE5A3CA00F221E0 /* BlocklyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F1662511EE5A3CA00F221E0 /* BlocklyViewController.swift */; };
 		6F1662821EE5BB3900F221E0 /* Block.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F1662761EE5BB3900F221E0 /* Block.swift */; };
 		6F1662831EE5BB3900F221E0 /* BlockBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F1662771EE5BB3900F221E0 /* BlockBuilder.swift */; };
 		6F1662841EE5BB3900F221E0 /* BlockGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F1662781EE5BB3900F221E0 /* BlockGroup.swift */; };
@@ -53,16 +52,12 @@
 		6F6FB3541EE7DAD6007545A8 /* Block+JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6FB3531EE7DAD6007545A8 /* Block+JSON.swift */; };
 		6F6FB3561EE7DE19007545A8 /* InputBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6FB3551EE7DE19007545A8 /* InputBuilder.swift */; };
 		6F6FB3581EE7E413007545A8 /* BlockFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6FB3571EE7E413007545A8 /* BlockFactory.swift */; };
-		6F6FB35A1EE7E615007545A8 /* BlockFactoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6FB3591EE7E615007545A8 /* BlockFactoryViewController.swift */; };
 		6F6FB35C1EE7ED8E007545A8 /* Toolbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6FB35B1EE7ED8E007545A8 /* Toolbox.swift */; };
 		6F6FB35E1EE7EEF1007545A8 /* ToolboxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6FB35D1EE7EEF1007545A8 /* ToolboxView.swift */; };
-		6F6FB3601EE7F2BC007545A8 /* BlockToolboxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6FB35F1EE7F2BC007545A8 /* BlockToolboxViewController.swift */; };
 		6F6FB3621EE84A5C007545A8 /* BlockCompileDef.json in Resources */ = {isa = PBXBuildFile; fileRef = 6F6FB3611EE84A5C007545A8 /* BlockCompileDef.json */; };
 		6F6FB3641EE84D30007545A8 /* Compiler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6FB3631EE84D30007545A8 /* Compiler.swift */; };
-		6F6FB3681EE859B0007545A8 /* BlocklyCompilerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6FB3671EE859B0007545A8 /* BlocklyCompilerViewController.swift */; };
 		6F6FB3871EE8E41C007545A8 /* AEXML.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F6FB37A1EE8E413007545A8 /* AEXML.framework */; };
 		6F6FB3891EE8E7C0007545A8 /* WorkspaceSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6FB3881EE8E7C0007545A8 /* WorkspaceSerializer.swift */; };
-		6F6FB38B1EE8EF13007545A8 /* BlockSerializerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6FB38A1EE8EF13007545A8 /* BlockSerializerViewController.swift */; };
 		6F6FB3951EE9321B007545A8 /* UIAlertController+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6FB3941EE9321B007545A8 /* UIAlertController+Convenience.swift */; };
 		6F6FB3981EE9378E007545A8 /* ProjectManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6FB3971EE9378E007545A8 /* ProjectManager.swift */; };
 		6F6FB39A1EE93E14007545A8 /* WrapperBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6FB3991EE93E14007545A8 /* WrapperBox.swift */; };
@@ -92,6 +87,11 @@
 		6FC6E04F1EE9B48100B4AFCC /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FC6E04E1EE9B48100B4AFCC /* CoreLocation.framework */; };
 		6FC6E0501EE9B56400B4AFCC /* iflyMSC.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6FC6E0441EE9B42800B4AFCC /* iflyMSC.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6FC6E0531EE9B79500B4AFCC /* VoiceCommandDef.abnf in Resources */ = {isa = PBXBuildFile; fileRef = 6FC6E0521EE9B79500B4AFCC /* VoiceCommandDef.abnf */; };
+		6FFEA6FE1EED5CF000CF3790 /* BlockFactoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FFEA6F91EED5CF000CF3790 /* BlockFactoryViewController.swift */; };
+		6FFEA6FF1EED5CF000CF3790 /* BlocklyCompilerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FFEA6FA1EED5CF000CF3790 /* BlocklyCompilerViewController.swift */; };
+		6FFEA7001EED5CF000CF3790 /* BlocklyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FFEA6FB1EED5CF000CF3790 /* BlocklyViewController.swift */; };
+		6FFEA7011EED5CF000CF3790 /* BlockSerializerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FFEA6FC1EED5CF000CF3790 /* BlockSerializerViewController.swift */; };
+		6FFEA7021EED5CF000CF3790 /* BlockToolboxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FFEA6FD1EED5CF000CF3790 /* BlockToolboxViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -175,7 +175,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		6F1662511EE5A3CA00F221E0 /* BlocklyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BlocklyViewController.swift; path = RobotControl_iOS/BlocklyViewController/BlocklyViewController.swift; sourceTree = SOURCE_ROOT; };
 		6F1662761EE5BB3900F221E0 /* Block.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Block.swift; sourceTree = "<group>"; };
 		6F1662771EE5BB3900F221E0 /* BlockBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlockBuilder.swift; sourceTree = "<group>"; };
 		6F1662781EE5BB3900F221E0 /* BlockGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlockGroup.swift; sourceTree = "<group>"; };
@@ -210,16 +209,12 @@
 		6F6FB3531EE7DAD6007545A8 /* Block+JSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Block+JSON.swift"; sourceTree = "<group>"; };
 		6F6FB3551EE7DE19007545A8 /* InputBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputBuilder.swift; sourceTree = "<group>"; };
 		6F6FB3571EE7E413007545A8 /* BlockFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlockFactory.swift; sourceTree = "<group>"; };
-		6F6FB3591EE7E615007545A8 /* BlockFactoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BlockFactoryViewController.swift; path = RobotControl_iOS/BlocklyViewController/BlockFactoryViewController.swift; sourceTree = SOURCE_ROOT; };
 		6F6FB35B1EE7ED8E007545A8 /* Toolbox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Toolbox.swift; sourceTree = "<group>"; };
 		6F6FB35D1EE7EEF1007545A8 /* ToolboxView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToolboxView.swift; sourceTree = "<group>"; };
-		6F6FB35F1EE7F2BC007545A8 /* BlockToolboxViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BlockToolboxViewController.swift; path = RobotControl_iOS/VisualProgramming/UI/View/BlockToolboxViewController.swift; sourceTree = SOURCE_ROOT; };
 		6F6FB3611EE84A5C007545A8 /* BlockCompileDef.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = BlockCompileDef.json; sourceTree = "<group>"; };
 		6F6FB3631EE84D30007545A8 /* Compiler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Compiler.swift; sourceTree = "<group>"; };
-		6F6FB3671EE859B0007545A8 /* BlocklyCompilerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BlocklyCompilerViewController.swift; path = RobotControl_iOS/BlocklyViewController/BlocklyCompilerViewController.swift; sourceTree = SOURCE_ROOT; };
 		6F6FB36F1EE8E413007545A8 /* AEXML.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = AEXML.xcodeproj; path = AEXML/AEXML.xcodeproj; sourceTree = "<group>"; };
 		6F6FB3881EE8E7C0007545A8 /* WorkspaceSerializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkspaceSerializer.swift; sourceTree = "<group>"; };
-		6F6FB38A1EE8EF13007545A8 /* BlockSerializerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BlockSerializerViewController.swift; path = RobotControl_iOS/VisualProgramming/Model/BlockSerializerViewController.swift; sourceTree = SOURCE_ROOT; };
 		6F6FB3941EE9321B007545A8 /* UIAlertController+Convenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Convenience.swift"; sourceTree = "<group>"; };
 		6F6FB3971EE9378E007545A8 /* ProjectManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectManager.swift; sourceTree = "<group>"; };
 		6F6FB3991EE93E14007545A8 /* WrapperBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WrapperBox.swift; sourceTree = "<group>"; };
@@ -253,6 +248,11 @@
 		6FC6E04E1EE9B48100B4AFCC /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		6FC6E0511EE9B5D900B4AFCC /* RobotControl_iOS-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RobotControl_iOS-Bridging-Header.h"; sourceTree = "<group>"; };
 		6FC6E0521EE9B79500B4AFCC /* VoiceCommandDef.abnf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = VoiceCommandDef.abnf; sourceTree = "<group>"; };
+		6FFEA6F91EED5CF000CF3790 /* BlockFactoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlockFactoryViewController.swift; sourceTree = "<group>"; };
+		6FFEA6FA1EED5CF000CF3790 /* BlocklyCompilerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlocklyCompilerViewController.swift; sourceTree = "<group>"; };
+		6FFEA6FB1EED5CF000CF3790 /* BlocklyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlocklyViewController.swift; sourceTree = "<group>"; };
+		6FFEA6FC1EED5CF000CF3790 /* BlockSerializerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlockSerializerViewController.swift; sourceTree = "<group>"; };
+		6FFEA6FD1EED5CF000CF3790 /* BlockToolboxViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlockToolboxViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -485,7 +485,7 @@
 			children = (
 				6F4797F91EEA8A6000FB9D53 /* RobotControl_iOS.entitlements */,
 				6F6FB3961EE9378E007545A8 /* Common */,
-				6F8603E71EDEF73F00AA4507 /* BlocklyViewController */,
+				6FFEA6F81EED5CF000CF3790 /* BlocklyViewController */,
 				6F6FB38D1EE9160B007545A8 /* RobotManager */,
 				6FC6E0341EE97C4000B4AFCC /* RemoteControl */,
 				6FC6E03F1EE9B24700B4AFCC /* VoiceControl */,
@@ -523,19 +523,6 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
-		6F8603E71EDEF73F00AA4507 /* BlocklyViewController */ = {
-			isa = PBXGroup;
-			children = (
-				6F1662511EE5A3CA00F221E0 /* BlocklyViewController.swift */,
-				6F6FB3591EE7E615007545A8 /* BlockFactoryViewController.swift */,
-				6F6FB35F1EE7F2BC007545A8 /* BlockToolboxViewController.swift */,
-				6F6FB3671EE859B0007545A8 /* BlocklyCompilerViewController.swift */,
-				6F6FB38A1EE8EF13007545A8 /* BlockSerializerViewController.swift */,
-			);
-			name = BlocklyViewController;
-			path = BloclyViewController;
-			sourceTree = "<group>";
-		};
 		6FC6E0341EE97C4000B4AFCC /* RemoteControl */ = {
 			isa = PBXGroup;
 			children = (
@@ -554,6 +541,19 @@
 				6F8547291EEA2EBA008E6D3B /* VoiceControlViewController.swift */,
 			);
 			path = VoiceControl;
+			sourceTree = "<group>";
+		};
+		6FFEA6F81EED5CF000CF3790 /* BlocklyViewController */ = {
+			isa = PBXGroup;
+			children = (
+				6FFEA6F91EED5CF000CF3790 /* BlockFactoryViewController.swift */,
+				6FFEA6FA1EED5CF000CF3790 /* BlocklyCompilerViewController.swift */,
+				6FFEA6FB1EED5CF000CF3790 /* BlocklyViewController.swift */,
+				6FFEA6FC1EED5CF000CF3790 /* BlockSerializerViewController.swift */,
+				6FFEA6FD1EED5CF000CF3790 /* BlockToolboxViewController.swift */,
+			);
+			name = BlocklyViewController;
+			path = VisualProgramming/BlocklyViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -732,16 +732,15 @@
 				6FC6E0411EE9B25400B4AFCC /* VoiceControl.swift in Sources */,
 				6F1662CA1EE64F0400F221E0 /* WorkspaceView.swift in Sources */,
 				6F1662C31EE64F0400F221E0 /* BlockView.swift in Sources */,
+				6FFEA7001EED5CF000CF3790 /* BlocklyViewController.swift in Sources */,
 				6F6FB3891EE8E7C0007545A8 /* WorkspaceSerializer.swift in Sources */,
 				6F6FB3951EE9321B007545A8 /* UIAlertController+Convenience.swift in Sources */,
 				6F4797F81EEA7A2100FB9D53 /* RoutePlanViewController.swift in Sources */,
 				6FC6E0361EE97C4A00B4AFCC /* RemoteControl.swift in Sources */,
 				6F6FB35C1EE7ED8E007545A8 /* Toolbox.swift in Sources */,
-				6F6FB35A1EE7E615007545A8 /* BlockFactoryViewController.swift in Sources */,
 				6F1662871EE5BB3900F221E0 /* Field.swift in Sources */,
 				6F16629C1EE6483600F221E0 /* LayoutConfig.swift in Sources */,
 				6FC6E03A1EE97E3800B4AFCC /* RemoteControlView.swift in Sources */,
-				6F1662521EE5A3CA00F221E0 /* BlocklyViewController.swift in Sources */,
 				6F1662CC1EE64F1A00F221E0 /* BlockBezierPath.swift in Sources */,
 				6FC6E02C1EE9786700B4AFCC /* RobotManager.swift in Sources */,
 				6F4797F61EEA773100FB9D53 /* RoutePlanView.swift in Sources */,
@@ -755,9 +754,10 @@
 				6F1662C51EE64F0400F221E0 /* FieldLabelView.swift in Sources */,
 				6FC6E02B1EE9786700B4AFCC /* BluetoothManager.swift in Sources */,
 				6F1662C91EE64F0400F221E0 /* ViewBuilder.swift in Sources */,
-				6F6FB38B1EE8EF13007545A8 /* BlockSerializerViewController.swift in Sources */,
+				6FFEA7011EED5CF000CF3790 /* BlockSerializerViewController.swift in Sources */,
 				6F6FB3981EE9378E007545A8 /* ProjectManager.swift in Sources */,
 				6F6FB3541EE7DAD6007545A8 /* Block+JSON.swift in Sources */,
+				6FFEA7021EED5CF000CF3790 /* BlockToolboxViewController.swift in Sources */,
 				6F6FB3581EE7E413007545A8 /* BlockFactory.swift in Sources */,
 				6F6FB3641EE84D30007545A8 /* Compiler.swift in Sources */,
 				6F6FB3561EE7DE19007545A8 /* InputBuilder.swift in Sources */,
@@ -765,20 +765,20 @@
 				6F1662851EE5BB3900F221E0 /* Connection.swift in Sources */,
 				6F1662861EE5BB3900F221E0 /* ConnectionManager.swift in Sources */,
 				6F6FB35E1EE7EEF1007545A8 /* ToolboxView.swift in Sources */,
-				6F6FB3601EE7F2BC007545A8 /* BlockToolboxViewController.swift in Sources */,
 				6F1662C61EE64F0400F221E0 /* FieldView.swift in Sources */,
 				6F1662C41EE64F0400F221E0 /* DefaultBlockView.swift in Sources */,
 				6F1662821EE5BB3900F221E0 /* Block.swift in Sources */,
 				6F85472A1EEA2EBA008E6D3B /* VoiceControlViewController.swift in Sources */,
 				6FC6E0381EE97E0700B4AFCC /* RemoteControlViewController.swift in Sources */,
-				6F6FB3681EE859B0007545A8 /* BlocklyCompilerViewController.swift in Sources */,
 				6F6FB34E1EE7CB4C007545A8 /* Variable.swift in Sources */,
 				6F6FB34A1EE7C155007545A8 /* FieldVariable.swift in Sources */,
 				6F1662831EE5BB3900F221E0 /* BlockBuilder.swift in Sources */,
+				6FFEA6FF1EED5CF000CF3790 /* BlocklyCompilerViewController.swift in Sources */,
 				6F1662891EE5BB3900F221E0 /* Workspace.swift in Sources */,
 				6F1662C71EE64F0400F221E0 /* InputView.swift in Sources */,
 				6F6FB33B1EE6B066007545A8 /* ViewManager.swift in Sources */,
 				6F6FB39A1EE93E14007545A8 /* WrapperBox.swift in Sources */,
+				6FFEA6FE1EED5CF000CF3790 /* BlockFactoryViewController.swift in Sources */,
 				6F74DAD61EDEEDE0003A6B23 /* DemoPickerViewController.swift in Sources */,
 				6F8603E61EDEF72D00AA4507 /* UIView + AutoLayout.swift in Sources */,
 			);
