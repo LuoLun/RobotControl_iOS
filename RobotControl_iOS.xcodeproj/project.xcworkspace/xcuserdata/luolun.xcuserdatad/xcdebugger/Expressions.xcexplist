@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "DefaultBlockView._positionOfConnections.getter:DefaultBlockView.swift">
+      </ContextState>
+      <ContextState
+         contextName = "FieldVariableView.(addVariable() -&gt; ()).(closure #2):FieldVariableView.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "sourceBlock">
+            </PersistentString>
+            <PersistentString
+               value = "sourceBlock.variableManager()">
+            </PersistentString>
+            <PersistentString
+               value = "sourceBlock._variableManager">
+            </PersistentString>
+            <PersistentString
+               value = "variableManager">
+            </PersistentString>
+            <PersistentString
+               value = "sourceBlock.parentBlock()">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "ConnectionManager.disconnect(Connection) -&gt; ():ConnectionManager.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "connection.sourceBlock.directConnections">
+            </PersistentString>
+            <PersistentString
+               value = "connection.targetConnection">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "WorkspaceView.panGesture(UIPanGestureRecognizer) -&gt; ():WorkspaceView.swift">
+      </ContextState>
+      <ContextState
+         contextName = "FieldVariableView.variableManagers(for : Block) -&gt; Set&lt;VariableManager&gt;:FieldVariableView.swift">
+      </ContextState>
+      <ContextState
+         contextName = "ConnectionManager.(connect(Connection, anotherConnection : Connection) throws -&gt; ()).(closure #1):ConnectionManager.swift">
+      </ContextState>
+      <ContextState
+         contextName = "ConnectionManager.findAvailableConnection(Connection) -&gt; Connection?:ConnectionManager.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "_connections">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "FieldInputView.layoutSubviews() -&gt; ():InputView.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "view.frame.origin">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "FieldVariableView.variableManager.getter:FieldVariableView.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "sourceInputView">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "DefaultBlockView.blockBackgroundBezierPath() -&gt; UIBezierPath:DefaultBlockView.swift">
+      </ContextState>
+      <ContextState
+         contextName = "Connection.matchWith(Connection) -&gt; Bool:Connection.swift">
+      </ContextState>
+      <ContextState
+         contextName = "FieldVariableView.variableManagers.getter:FieldVariableView.swift">
+      </ContextState>
+      <ContextState
+         contextName = "DefaultBlockView.positionOf(Connection) -&gt; CGPoint:DefaultBlockView.swift">
+      </ContextState>
+      <ContextState
+         contextName = "FieldVariableView.variables(for : Block) -&gt; [(name : String, namespace : String)]:FieldVariableView.swift">
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>
