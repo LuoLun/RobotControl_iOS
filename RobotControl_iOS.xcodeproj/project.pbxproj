@@ -546,11 +546,11 @@
 		6FFEA6F81EED5CF000CF3790 /* BlocklyViewController */ = {
 			isa = PBXGroup;
 			children = (
-				6FFEA6F91EED5CF000CF3790 /* BlockFactoryViewController.swift */,
-				6FFEA6FA1EED5CF000CF3790 /* BlocklyCompilerViewController.swift */,
 				6FFEA6FB1EED5CF000CF3790 /* BlocklyViewController.swift */,
-				6FFEA6FC1EED5CF000CF3790 /* BlockSerializerViewController.swift */,
 				6FFEA6FD1EED5CF000CF3790 /* BlockToolboxViewController.swift */,
+				6FFEA6FA1EED5CF000CF3790 /* BlocklyCompilerViewController.swift */,
+				6FFEA6F91EED5CF000CF3790 /* BlockFactoryViewController.swift */,
+				6FFEA6FC1EED5CF000CF3790 /* BlockSerializerViewController.swift */,
 			);
 			name = BlocklyViewController;
 			path = VisualProgramming/BlocklyViewController;
@@ -939,6 +939,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = RobotControl_iOS/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.aaron.RobotControl-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -960,6 +961,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = RobotControl_iOS/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.aaron.RobotControl-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -8,6 +8,9 @@
 
 import Foundation
 
+/**
+ *  Construct a block builder from json definition
+ */
 extension Block {
     
     public class func makeBuilder(json: [String: Any]) throws -> BlockBuilder {
